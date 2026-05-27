@@ -4,115 +4,281 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>San Bernardino Swiss Alps - Summer Village 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --black: #000000;
-      --white: #ffffff;
-      --gray: #666666;
-      --light: #f5f5f5;
-      --border: #cccccc;
+      /* Palette ufficiale dagli screenshot */
+      --bg-dark: #1a1c1a;          /* Fondo scuro della hero */
+      --bg-light: #f4f2eb;         /* Fondo avorio delle sezioni interne */
+      --card-bg: #ffffff;
+      
+      --arancio: #ed7354;
+      --giallo: #ffde66;
+      --verdone: #0b7e66;
+      --verde-acqua: #91cfd1;
+      --azzurro: #c0dbf3;
+      --blu: #5b6baf;
+      --viola: #b16aa8;
+      
+      --text-dark: #111111;
+      --text-muted: #555555;
+      --text-light: #ffffff;
+      --border-color: #e0ded7;
     }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--black); margin: 0; padding: 0; background: var(--white); -webkit-font-smoothing: antialiased; }
-    .hero { padding: 4rem 2.5rem; border-bottom: 1px solid var(--border); max-width: 800px; }
-    .hero-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray); margin-bottom: 1rem; }
-    .hero h1 { font-size: 48px; font-weight: 800; line-height: 1.1; margin: 0 0 1.5rem 0; letter-spacing: -0.02em; }
-    .hero-body { font-size: 18px; line-height: 1.5; color: var(--gray); margin-bottom: 1.5rem; }
-    .hero-list { margin: 0 0 2rem 0; padding-left: 1.25rem; color: var(--gray); font-size: 15px; line-height: 1.6; }
-    .hero-sub { font-size: 14px; font-weight: 600; margin-bottom: 1.5rem; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body { 
+      font-family: 'Bricolage Grotesque', -apple-system, sans-serif; 
+      color: var(--text-dark); 
+      margin: 0; 
+      padding: 0; 
+      background: var(--bg-light); 
+      -webkit-font-smoothing: antialiased; 
+    }
+
+    /* HERO STYLING (Stile scuro/sfumato come da screenshot) */
+    .hero { 
+      background: linear-gradient(135deg, #131714 0%, #24241f 100%);
+      color: var(--text-light);
+      padding: 5rem 2.5rem; 
+      border-bottom: 1px solid rgba(255,255,255,0.1); 
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: 0; right: 0; left: 0;
+      height: 150px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,100 L200,40 L400,80 L700,20 L1000,70 L1000,100 Z" fill="%23f4f2eb" opacity="0.05"/></svg>') bottom repeat-x;
+    }
+    .hero-tag { 
+      font-size: 13px; 
+      font-weight: 600; 
+      text-transform: uppercase; 
+      letter-spacing: 0.1em; 
+      color: var(--giallo); 
+      margin-bottom: 1.5rem; 
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-tag::before {
+      content: "";
+      width: 20px;
+      height: 1px;
+      background: var(--giallo);
+    }
+    .hero h1 { 
+      font-size: 64px; 
+      font-weight: 300; 
+      line-height: 1.1; 
+      margin: 0 0 2rem 0; 
+      letter-spacing: -0.02em; 
+    }
+    .hero h1 em {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--giallo);
+      display: block;
+    }
+    .hero-body { 
+      font-size: 18px; 
+      line-height: 1.6; 
+      color: #b5b5b0; 
+      max-width: 600px;
+      margin-bottom: 1.5rem; 
+    }
+    .hero-list { 
+      margin: 0 0 2.5rem 0; 
+      padding-left: 1.25rem; 
+      color: #b5b5b0; 
+      font-size: 15px; 
+      line-height: 1.7; 
+      max-width: 600px;
+    }
+    .hero-list li { margin-bottom: 0.5rem; }
+    .hero-list strong { color: var(--text-light); }
+    .hero-sub { font-size: 15px; font-weight: 500; margin-bottom: 2rem; color: var(--giallo); }
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .hero-btn-p { display: inline-block; padding: 12px 24px; background: var(--black); color: var(--white); text-decoration: none; font-size: 13px; font-weight: 700; border-radius: 100px; }
-    .hero-btn-s { display: inline-block; padding: 12px 24px; background: transparent; color: var(--black); text-decoration: none; font-size: 13px; font-weight: 700; border-radius: 100px; border: 1px solid var(--border); }
     
-    .section-wrap { padding: 4rem 2.5rem; }
-    .section-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray); margin-bottom: 0.5rem; }
-    .section-title { font-size: 32px; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 1rem 0; }
-    .section-title span { color: var(--gray); font-weight: 400; }
-    .section-desc { font-size: 15px; color: var(--gray); max-width: 600px; margin-bottom: 2rem; line-height: 1.5; }
-    .section-rule { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .hero-btn-p { 
+      display: inline-block; 
+      padding: 14px 28px; 
+      background: var(--giallo); 
+      color: var(--bg-dark); 
+      text-decoration: none; 
+      font-size: 14px; 
+      font-weight: 700; 
+      border-radius: 4px; 
+      transition: all 0.2s;
+    }
+    .hero-btn-p:hover { background: #e0c255; }
+    .hero-btn-s { 
+      display: inline-block; 
+      padding: 14px 28px; 
+      background: transparent; 
+      color: var(--text-light); 
+      text-decoration: none; 
+      font-size: 14px; 
+      font-weight: 600; 
+      border-radius: 4px; 
+      border: 1px solid rgba(255,255,255,0.3); 
+      transition: all 0.2s;
+    }
+    .hero-btn-s:hover { border-color: var(--text-light); background: rgba(255,255,255,0.05); }
     
-    .info-banner { background: var(--light); padding: 1.5rem; border-radius: 0px; margin-bottom: 2.5rem; max-width: 700px; border-left: 3px solid var(--black); }
-    .info-banner-title { font-size: 14px; font-weight: 700; margin-bottom: 0.5rem; }
-    .info-banner-text { font-size: 13px; color: var(--gray); line-height: 1.5; }
+    /* CONVERSION BANNER (SOGGIORNO) */
+    .promo-banner {
+      background: #1e221f; 
+      color: var(--text-light);
+      padding: 2.5rem; 
+      border-bottom: 1px solid var(--border-color); 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap; 
+      gap: 1.5rem;
+    }
+    .promo-banner h4 { font-size: 18px; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--giallo); }
+    .promo-banner p { font-size: 14px; color: #b5b5b0; line-height: 1.6; margin: 0; max-width: 650px; }
+    .promo-btn { 
+      padding: 14px 24px; 
+      background: transparent; 
+      color: var(--giallo); 
+      font-size: 12px; 
+      font-weight: 700; 
+      letter-spacing: 0.05em; 
+      text-transform: uppercase; 
+      text-decoration: none; 
+      border: 1px solid var(--giallo);
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .promo-btn:hover { background: var(--giallo); color: var(--bg-dark); }
+
+    /* SEZIONI CONTENUTO */
+    .section-wrap { padding: 5rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+    .section-tag { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--arancio); margin-bottom: 0.5rem; }
     
-    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
-    @media (max-width: 768px) { .cards-grid { grid-template-columns: 1fr; } }
-    .card { border: 1px solid var(--border); border-radius: 0px; overflow: hidden; display: flex; flex-direction: column; background: var(--white); }
-    .card-img-wrap { height: 200px; overflow: hidden; background: #eee; }
+    .section-title { font-size: 48px; font-weight: 400; letter-spacing: -0.02em; margin: 0 0 1rem 0; }
+    .section-title em { font-style: italic; font-weight: 400; color: var(--verdone); }
+    .section-desc { font-size: 16px; color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; line-height: 1.6; }
+    .section-rule { border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0; }
+    
+    /* INFO BANNER */
+    .info-banner { background: var(--card-bg); padding: 2rem; border-radius: 16px; margin-bottom: 3.5rem; border-left: 4px solid var(--arancio); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+    .info-banner-title { font-size: 16px; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+    .info-banner-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    
+    /* GRIGLIA SCHEDE & CARDS */
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
+    @media (max-width: 768px) { .cards-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    
+    .card { border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; background: var(--card-bg); transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.04); }
+    .card-img-wrap { height: 240px; overflow: hidden; background: #ebdccb; position: relative; }
     .card-img { width: 100%; height: 100%; object-fit: cover; }
-    .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-    .card-cats { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--gray); margin-bottom: 0.5rem; }
-    .card-date { font-size: 13px; font-weight: 700; margin-bottom: 0.5rem; }
-    .card-title { font-size: 20px; font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
-    .card-desc { font-size: 13px; color: var(--gray); line-height: 1.5; margin-bottom: 1.5rem; flex-grow: 1; }
+    .card-body { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
     
-    .perfetto-per { margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
-    .perfetto-label { font-size: 11px; font-weight: 700; color: var(--gray); margin-right: 0.25rem; text-transform: uppercase; }
-    .perfetto-tag { font-size: 11px; background: var(--light); padding: 4px 10px; border-radius: 0px; font-weight: 600; border: 1px solid var(--border); }
+    /* Tag Categorie Colorati come da screenshot */
+    .card-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .cat-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; background: #eee; }
+    .cat-badge.wellness { background: rgba(237, 115, 84, 0.15); color: #c44e32; }
+    .cat-badge.musica { background: rgba(91, 107, 175, 0.15); color: #3b498c; }
+    .cat-badge.natura { background: rgba(11, 126, 102, 0.15); color: #085c4a; }
+    .cat-badge.famiglia { background: rgba(177, 106, 168, 0.15); color: #8e4480; }
+    .cat-badge.arte { background: rgba(145, 207, 209, 0.2); color: #1f6b6e; }
+    .cat-badge.sport { background: rgba(255, 222, 102, 0.25); color: #8c710b; }
     
-    .card-btn { background: var(--black); color: var(--white); border: 0; padding: 12px 20px; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; width: 100%; text-align: left; }
-    .card-btn:hover { background: #333; }
+    .card-date { font-size: 13px; font-weight: 700; color: var(--arancio); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .card-title { font-size: 26px; font-weight: 400; margin: 0 0 1rem 0; letter-spacing: -0.01em; line-height: 1.2; }
+    .card-title em { font-style: italic; color: var(--verdone); }
+    .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
+    
+    .perfetto-per { margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem; }
+    .perfetto-label { font-size: 11px; font-weight: 700; color: #999; margin-right: 0.25rem; text-transform: uppercase; }
+    .perfetto-tag { font-size: 12px; background: #f4f2eb; padding: 4px 12px; border-radius: 100px; font-weight: 500; color: var(--text-dark); }
+    
+    .card-btn { background: transparent; color: var(--text-dark); border: 0; padding: 0 0 4px 0; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid var(--text-dark); width: max-content; text-transform: uppercase; letter-spacing: 0.05em; }
+    .card-btn:hover { color: var(--arancio); border-bottom-color: var(--arancio); }
     .card-btn .arr { font-size: 16px; transition: transform 0.2s; }
-    .card-btn.open .arr { transform: rotate(90deg); }
+    .card-btn.open .arr { transform: translate(3px, 3px) rotate(45deg); }
     
-    .detail-panel { display: none; background: var(--white); border: 1px solid var(--border); border-radius: 0px; padding: 2rem; margin-bottom: 2.5rem; }
-    .detail-panel.open { display: block; }
-    .detail-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-    .detail-header-title { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
-    .detail-close { background: none; border: 0; font-size: 18px; cursor: pointer; color: var(--gray); }
+    /* PANNELLO DETTAGLIO INTERNO (ACCORDION) */
+    .detail-panel { display: none; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+    .detail-panel.open { display: block; animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
-    .detail-day-label { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray); margin: 1.5rem 0 1rem 0; padding-bottom: 0.25rem; border-bottom: 2px solid var(--black); display: inline-block; }
-    .detail-slot { display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .detail-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem; margin-bottom: 2rem; }
+    .detail-header-title { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+    .detail-close { background: #f4f2eb; border: 0; font-size: 14px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; color: var(--text-dark); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .detail-close:hover { background: var(--arancio); color: white; }
+    
+    .detail-day-label { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--verdone); margin: 2rem 0 1.5rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--verdone); display: inline-block; }
+    .detail-slot { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px dashed var(--border-color); }
     @media (max-width: 576px) { .detail-slot { grid-template-columns: 1fr; gap: 0.5rem; } }
-    .detail-time { font-size: 13px; font-weight: 700; color: var(--gray); padding-top: 2px; }
-    .detail-activities { display: flex; flex-direction: column; gap: 0.75rem; }
-    .detail-activity { font-size: 14px; line-height: 1.4; }
+    .detail-time { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #999; letter-spacing: 0.05em; padding-top: 4px; }
+    .detail-activities { display: flex; flex-direction: column; gap: 1rem; }
+    .detail-activity { font-size: 15px; line-height: 1.5; color: var(--text-dark); }
     
-    .who { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 2px 6px; margin-right: 0.5rem; display: inline-block; letter-spacing: 0.02em; border: 1px solid var(--border); }
-    .who-adults { background: var(--white); color: var(--black); }
-    .who-kids { background: var(--light); color: var(--black); }
-    .who-together { background: var(--black); color: var(--white); }
-    .who-event { background: var(--white); color: var(--black); border-color: var(--black); }
-    .who-arrivo { background: var(--light); color: var(--gray); }
+    /* BADGES INTERNI DI FLUSSO */
+    .who { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; margin-right: 0.5rem; display: inline-block; letter-spacing: 0.03em; border-radius: 4px; }
+    .who-adults { background: rgba(91, 107, 175, 0.1); color: var(--blu); }
+    .who-kids { background: rgba(177, 106, 168, 0.1); color: var(--viola); }
+    .who-together { background: #111; color: #fff; }
+    .who-event { background: var(--arancio); color: #fff; }
+    .who-arrivo { background: #eee; color: #666; }
     
-    .abadge { font-size: 11px; font-weight: 600; padding: 2px 8px; display: inline-block; margin-left: 0.5rem; }
-    .abadge-book { background: var(--black); color: var(--white); }
-    .abadge-free { background: var(--white); color: var(--black); border: 1px solid var(--border); }
-    .abadge-warn { background: var(--light); color: var(--black); border: 1px solid var(--black); }
+    .abadge { font-size: 11px; font-weight: 700; padding: 3px 10px; display: inline-block; margin-left: 0.5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.02em; }
+    .abadge-book { background: #fff0ea; color: #c44e32; border: 1px solid rgba(237,115,84,0.3); }
+    .abadge-free { background: #eefaf6; color: #085c4a; border: 1px solid rgba(11,126,102,0.2); }
+    .abadge-warn { background: #fffde6; color: #8c710b; border: 1px solid rgba(255,222,102,0.5); }
     
-    .detail-note { font-size: 13px; color: var(--gray); line-height: 1.5; background: var(--light); padding: 1rem; margin-top: 0.25rem; }
-    .detail-fb { font-size: 13px; color: var(--black); line-height: 1.5; background: var(--light); padding: 1rem; margin-top: 0.25rem; border-left: 3px solid var(--black); }
-    .dcta { display: inline-block; font-size: 13px; font-weight: 700; color: var(--black); text-decoration: none; margin-top: 0.5rem; border-bottom: 1px solid var(--black); padding-bottom: 2px; align-self: flex-start; }
-    .detail-sep { height: 1px; background: var(--border); margin: 2rem 0; }
+    .detail-note { font-size: 14px; color: var(--text-muted); line-height: 1.6; background: #faf9f5; padding: 1.25rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border-color); }
+    .detail-fb { font-size: 14px; color: var(--text-dark); line-height: 1.6; background: #fbf7f0; padding: 1.25rem; border-radius: 8px; margin-top: 0.5rem; border-left: 4px solid var(--verdone); }
+    .dcta { display: inline-block; font-size: 13px; font-weight: 700; color: var(--text-dark); text-decoration: none; margin-top: 0.5rem; border-bottom: 2px solid var(--arancio); padding-bottom: 2px; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.03em; }
+    .dcta:hover { color: var(--arancio); }
+    .detail-sep { height: 1px; background: var(--border-color); margin: 2.5rem 0; }
     
-    .checklist { background: var(--light); padding: 1.5rem; margin-top: 2rem; border: 1px solid var(--border); }
-    .checklist-title { font-size: 14px; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .checklist-items { display: flex; flex-direction: column; gap: 0.75rem; }
-    .checklist-item { display: flex; align-items: center; gap: 0.75rem; font-size: 13px; }
-    .checklist-num { width: 20px; height: 20px; background: var(--black); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
-    .checklist-item a { color: var(--black); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1px; width: 100%; }
-    .checklist-item a:hover { border-bottom-color: var(--black); }
+    /* CHECKLIST DI PRENOTAZIONE (Box Giallo caratteristico dagli screenshot) */
+    .checklist { background: #fdfaf0; padding: 2rem; margin-top: 2.5rem; border-radius: 12px; border: 1px solid #f3ebd3; }
+    .checklist-title { font-size: 13px; font-weight: 800; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dark); }
+    .checklist-items { display: flex; flex-direction: column; gap: 1rem; }
+    .checklist-item { display: flex; align-items: center; gap: 1rem; font-size: 14px; font-weight: 500; }
+    .checklist-num { width: 24px; height: 24px; background: var(--giallo); color: #574603; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; border-radius: 4px; flex-shrink: 0; }
+    .checklist-item a { color: var(--text-dark); text-decoration: none; border-bottom: 1px solid var(--text-dark); padding-bottom: 1px; transition: color 0.2s; }
+    .checklist-item a:hover { color: var(--arancio); border-bottom-color: var(--arancio); }
     
-    .pause-section { padding: 4rem 2.5rem; background: var(--light); border-top: 1px solid var(--border); }
-    .pause-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .pause-card { background: var(--white); border: 1px solid var(--border); padding: 1.5rem; display: flex; flex-direction: column; }
-    .pause-emoji { font-size: 24px; margin-bottom: 1rem; display: block; }
-    .pause-duration { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--gray); margin-bottom: 0.25rem; }
-    .pause-title { font-size: 18px; font-weight: 800; margin-bottom: 0.5rem; }
-    .pause-desc { font-size: 13px; color: var(--gray); line-height: 1.4; margin-bottom: 1.25rem; flex-grow: 1; }
-    .pause-steps { background: var(--light); padding: 1rem; margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; border-left: 2px solid var(--black); }
-    .pause-step { font-size: 12px; display: flex; gap: 0.5rem; line-height: 1.3; }
-    .pause-step-num { font-weight: 700; color: var(--black); }
-    .pause-cta { font-size: 13px; font-weight: 700; color: var(--black); text-decoration: none; border-bottom: 1px solid var(--black); padding-bottom: 2px; align-self: flex-start; }
+    /* PICCOLE PAUSE ALPINE (Sezione inferiore) */
+    .pause-section { padding: 6rem 2.5rem; background: #eceae1; border-top: 1px solid var(--border-color); }
+    .pause-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .pause-card { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border-color); padding: 2rem; display: flex; flex-direction: column; transition: transform 0.2s; }
+    .pause-card:hover { transform: translateY(-4px); }
+    .pause-emoji { font-size: 28px; margin-bottom: 1rem; display: block; }
+    .pause-duration { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--arancio); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .pause-title { font-size: 22px; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+    .pause-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem; flex-grow: 1; }
+    .pause-steps { background: var(--bg-light); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; border-left: 3px solid var(--blu); }
+    .pause-step { font-size: 13px; display: flex; gap: 0.5rem; line-height: 1.4; color: var(--text-dark); }
+    .pause-step-num { font-weight: 800; color: var(--blu); }
+    .pause-cta { font-size: 13px; font-weight: 700; color: var(--text-dark); text-decoration: none; border-bottom: 2px solid var(--blu); padding-bottom: 2px; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.03em; }
+    .pause-cta:hover { color: var(--blu); }
     
-    .bottom-note { text-align: center; padding: 3rem 2.5rem; font-size: 12px; color: var(--gray); border-top: 1px solid var(--border); line-height: 1.5; }
+    .bottom-note { text-align: center; padding: 4rem 2.5rem; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border-color); line-height: 1.6; background: #e4e2d9; }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-tag">Summer Village . 3 luglio – 16 agosto 2026</div>
-  <h1>Lasciati<br>ispirare</h1>
+  <h1>Lasciati<br><em>ispirare</em></h1>
   <p class="hero-body">Abbiamo costruito l'estate per adattarsi al tuo tempo, che tu stia pianificando una fuga dalla pianura o che tu sia già nel villaggio. A meno di due ore da Milano e Lugano.</p>
   <ul class="hero-list">
     <li><strong>Giornate e weekend:</strong> programmi completi tra natura, eventi e relax.</li>
@@ -125,19 +291,17 @@
   </div>
 </div>
 
-<!-- CONVERSION BANNER: SOGGIORNO -->
-<div style="background: var(--light); padding: 2rem 2.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-  <div style="max-width: 600px;">
-    <h4 style="font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; color: var(--black);">Vuoi estendere la tua esperienza in quota?</h4>
-    <p style="font-size: 13px; color: var(--gray); line-height: 1.5;">Evita il traffico del rientro verso la pianura. Prenota una camera all'Albergo Brocco &amp; Posta direttamente nel centro del villaggio per vivere i programmi del weekend in totale relax.</p>
+<div class="promo-banner">
+  <div>
+    <h4>Vuoi estendere la tua esperienza in quota?</h4>
+    <p>Evita il traffico del rientro verso la pianura. Prenota una camera all'Albergo Brocco &amp; Posta direttamente nel centro del villaggio per vivere i programmi del weekend in totale relax.</p>
   </div>
-  <a href="#" style="padding: 12px 24px; background: var(--black); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;">Verifica disponibilità camere</a>
+  <a href="#" class="promo-btn">Verifica disponibilità camere</a>
 </div>
 
-<!-- GIORNATE -->
 <div class="section-wrap" id="giornate">
   <div class="section-tag">Esperienze</div>
-  <div class="section-title">Giornate e <span>weekend</span></div>
+  <div class="section-title">Giornate e <em>weekend</em></div>
   <p class="section-desc">Cinque programmi già pensati per te. Puoi seguirli per intero o scegliere solo le attività che preferisci.</p>
   <hr class="section-rule">
   <div class="info-banner">
@@ -145,14 +309,17 @@
     <div class="info-banner-text">Puoi partecipare a tutto il programma o solo ad alcune attività. Ogni esperienza si prenota separatamente, i posti sono limitati. Gli eventi SBSA si prenotano tramite il nostro sistema. Le attività partner direttamente con l'organizzatore.</div>
   </div>
 
-  <!-- RIGA 1 -->
   <div class="cards-grid">
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Montagna"></div>
       <div class="card-body">
-        <div class="card-cats">Wellness . Musica . Natura</div>
+        <div class="card-cats">
+          <span class="cat-badge wellness">🧘 Wellness</span>
+          <span class="cat-badge musica">🎵 Musica</span>
+          <span class="cat-badge natura">🌿 Natura</span>
+        </div>
         <div class="card-date">Weekend . 25 e 26 luglio</div>
-        <div class="card-title">Natura, musica e rigenerazione</div>
+        <div class="card-title">Natura, musica <em>e rigenerazione</em></div>
         <div class="card-desc">Una fuga dal caldo cittadino raggiungibile in meno di due ore da Milano e Lugano. Esperienza Innerwalk al passo, spa al Brocco e concerto Greenhope sotto le stelle.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Coppie</span><span class="perfetto-tag">Wellness lovers</span><span class="perfetto-tag">Chi cerca silenzio</span></div>
         <button class="card-btn" onclick="toggleDetail('detail-1',this)">Scopri il programma <span class="arr">→</span></button>
@@ -161,9 +328,13 @@
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1533294160620-855a3e2cb782?w=700&q=80" alt="Concerto"></div>
       <div class="card-body">
-        <div class="card-cats">Musica live . Famiglia . Svizzera</div>
+        <div class="card-cats">
+          <span class="cat-badge musica">🎵 Musica live</span>
+          <span class="cat-badge famiglia">👨‍👩‍👧‍👦 Famiglia</span>
+          <span class="cat-badge sport">🇨🇭 CH Svizzera</span>
+        </div>
         <div class="card-date">Giornata . 1 agosto</div>
-        <div class="card-title">Festa Nazionale in quota</div>
+        <div class="card-title">Festa Nazionale <em>in quota</em></div>
         <div class="card-desc">Il 1 agosto in montagna, come si deve. Un villaggio in festa, il multisport per i bambini nel pomeriggio e Davide Van De Sfroos sul palco della Raiffeisen Alpine Lounge la sera.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Famiglie</span><span class="perfetto-tag">Ticinesi e lombardi</span><span class="perfetto-tag">Amanti della musica</span></div>
         <button class="card-btn" onclick="toggleDetail('detail-2',this)">Scopri il programma <span class="arr">→</span></button>
@@ -171,7 +342,6 @@
     </div>
   </div>
 
-  <!-- DETAIL 1 -->
   <div class="detail-panel" id="detail-1">
     <div class="detail-header">
       <div class="detail-header-title">Natura, musica e rigenerazione . 25 e 26 luglio</div>
@@ -183,7 +353,7 @@
         <div class="detail-time">Mattina</div>
         <div class="detail-activities">
           <div class="detail-activity"><span class="who who-adults">adulti</span> <strong>Esperienza Innerwalk</strong>, passeggiata meditativa al passo + spa al Brocco <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-note">Un'unica esperienza guidata: camminata consapevole con cuffie wireless al passo, seguita dall'accesso alla spa del Brocco. Si prenota come pacchetto unico.</div>
+          <div class="detail-note">Un'unica esperienza guidata: camminata consapevole con cuffie wireless al passo, seguita dall'accesso alla spa del Brocco. Si prenota como pacchetto unico.</div>
           <a class="dcta" href="#">Prenota l'esperienza Innerwalk →</a>
         </div>
       </div>
@@ -239,7 +409,6 @@
     </div>
   </div>
 
-  <!-- DETAIL 2 -->
   <div class="detail-panel" id="detail-2">
     <div class="detail-header">
       <div class="detail-header-title">Festa Nazionale in quota . 1 agosto</div>
@@ -287,14 +456,16 @@
     </div>
   </div>
 
-  <!-- RIGA 2 -->
   <div class="cards-grid">
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=80" alt="Laboratorio"></div>
       <div class="card-body">
-        <div class="card-cats">Famiglia . Arte</div>
+        <div class="card-cats">
+          <span class="cat-badge famiglia">👨‍👩‍👧‍👦 Famiglia</span>
+          <span class="cat-badge arte">🎨 Arte</span>
+        </div>
         <div class="card-date">Giornata . 4 agosto</div>
-        <div class="card-title">Stessa tecnica, occhi diversi</div>
+        <div class="card-title">Stessa tecnica, <em>occhi diversi</em></div>
         <div class="card-desc">Un laboratorio parallelo di cianotipia botanica. I bambini creano esplorando la natura al mattino, gli adulti approfondiscono la tecnica al pomeriggio.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Genitori e figli</span><span class="perfetto-tag">Creativi</span></div>
         <button class="card-btn" onclick="toggleDetail('detail-3',this)">Scopri il programma <span class="arr">→</span></button>
@@ -303,9 +474,13 @@
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=700&q=80" alt="Trail"></div>
       <div class="card-body">
-        <div class="card-cats">Sport . Sapori . Famiglia</div>
+        <div class="card-cats">
+          <span class="cat-badge sport">🏃 Sport</span>
+          <span class="cat-badge arancio">🍲 Sapori</span>
+          <span class="cat-badge famiglia">👨‍👩‍👧‍👦 Famiglia</span>
+        </div>
         <div class="card-date">Weekend . 7 e 8 agosto</div>
-        <div class="card-title">Arte, sfida e sapori</div>
+        <div class="card-title">Arte, sfida <em>e sapori</em></div>
         <div class="card-desc">Il weekend della Vertical SanBe. Unisci l'adrenalina della gara in quota con gli atelier creativi per i bambini e i percorsi enogastronomici in piazzetta.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Sportivi</span><span class="perfetto-tag">Buongustai</span><span class="perfetto-tag">Famiglie</span></div>
         <button class="card-btn" onclick="toggleDetail('detail-4',this)">Scopri il programma <span class="arr">→</span></button>
@@ -313,7 +488,6 @@
     </div>
   </div>
 
-  <!-- DETAIL 3 -->
   <div class="detail-panel" id="detail-3">
     <div class="detail-header">
       <div class="detail-header-title">Stessa tecnica, occhi diversi . 4 agosto</div>
@@ -366,7 +540,6 @@
     </div>
   </div>
 
-  <!-- DETAIL 4 -->
   <div class="detail-panel" id="detail-4">
     <div class="detail-header">
       <div class="detail-header-title">Arte, sfida e sapori . 7 e 8 agosto</div>
@@ -440,29 +613,31 @@
     </div>
   </div>
 
-  <!-- RIGA 3 -->
-  <div class="cards-grid" style="grid-template-columns: 1fr 1fr;">
+  <div class="cards-grid">
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=700&q=80" alt="Notte stellata"></div>
       <div class="card-body">
-        <div class="card-cats">Stelle . Musica . Famiglia</div>
+        <div class="card-cats">
+          <span class="cat-badge giallo">⭐ Stelle</span>
+          <span class="cat-badge musica">🎵 Musica</span>
+          <span class="cat-badge verdone">🏔️ In Quota</span>
+        </div>
         <div class="card-date">Weekend lungo . 13, 14 e 15 agosto</div>
-        <div class="card-title">Ferragosto alpino</div>
+        <div class="card-title">Ferragosto <em>alpino</em></div>
         <div class="card-desc">Tre giorni con le aperture serali straordinarie della cabinovia. La notte delle stelle il 13, il concerto al tramonto a Capanna Confin il 14, il Ferragosto alpino alla Raiffeisen Alpine Lounge il 15.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Famiglie</span><span class="perfetto-tag">Coppie</span><span class="perfetto-tag">Night owls</span></div>
         <button class="card-btn" onclick="toggleDetail('detail-5',this)">Scopri il programma <span class="arr">→</span></button>
       </div>
     </div>
-    <div style="background:var(--light); border: 1px solid var(--border); display:flex; align-items:center; justify-content:center; padding:2rem; text-align:center;">
+    <div style="background:#e4e2d9; border: 1px dashed var(--border-color); border-radius: 16px; display:flex; align-items:center; justify-content:center; padding:2rem; text-align:center;">
       <div>
-        <div style="font-size:28px;margin-bottom:0.75rem">📅</div>
-        <div style="font-size:13px;font-weight:700;color:var(--black);margin-bottom:0.4rem">Altre date in arrivo</div>
-        <div style="font-size:12px;color:var(--gray);">Il calendario si aggiorna.<br>Iscriviti alla newsletter per non perdere niente.</div>
+        <div style="font-size:36px;margin-bottom:1rem">📅</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem">Altre date in arrivo</div>
+        <div style="font-size:14px;color:var(--text-muted);line-height:1.5;">Il calendario si aggiorna.<br>Iscriviti alla newsletter per non perdere niente.</div>
       </div>
     </div>
   </div>
 
-  <!-- DETAIL 5 -->
   <div class="detail-panel" id="detail-5">
     <div class="detail-header">
       <div class="detail-header-title">Ferragosto alpino . 13, 14 e 15 agosto</div>
@@ -521,7 +696,7 @@
         <div class="detail-activities">
           <div class="detail-activity"><span class="who who-kids">bambini</span> <strong>SanBe Kids multisport</strong> . Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div>
           <div class="detail-activity"><span class="who who-event">evento</span> <strong>Ferragosto alpino</strong> . Raiffeisen Alpine Lounge <span class="abadge abadge-warn">Prenotazione consigliata</span></div>
-          <div class="detail-note">Il pranzo tradicional in quota alla Raiffeisen Alpine Lounge richiede la prenotazione del tavolo e il titolo di trasporto per la cabinovia.</div>
+          <div class="detail-note">Il pranzo tradizional in quota alla Raiffeisen Alpine Lounge richiede la prenotazione del tavolo e il titolo di trasporto per la cabinovia.</div>
           <a class="dcta" href="#">Riserva il tavolo alla Raiffeisen Alpine Lounge →</a>
           <a class="dcta" href="#">Acquista lo skipass estivo / pass cabinovia →</a>
         </div>
@@ -543,10 +718,9 @@
 
 </div>
 
-<!-- PICCOLE PAUSE ALPINE -->
 <div class="pause-section" id="pause">
   <div class="section-tag">Piccole pause alpine</div>
-  <div class="section-title">Non serve <span>una giornata intera</span></div>
+  <div class="section-title">Non serve <em>una giornata intera</em></div>
   <p class="section-desc">Combinazioni da 2 o 3 ore per chi è già nel villaggio o ha solo qualche ora libera. Scegli, prenota e lascia che San Bernardino faccia il resto.</p>
   <hr class="section-rule">
   <div class="pause-grid">
