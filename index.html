@@ -3,286 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>San Bernardino Swiss Alps - Summer Village 2026</title>
+  <title>Lasciati ispirare · San Bernardino Summer Village 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
-  
   <style>
     :root {
-      /* Palette ufficiale dagli screenshot */
-      --bg-dark: #1a1c1a;          /* Fondo scuro della hero */
-      --bg-light: #f4f2eb;         /* Fondo avorio delle sezioni interne */
-      --card-bg: #ffffff;
-      
-      --arancio: #ed7354;
-      --giallo: #ffde66;
-      --verdone: #0b7e66;
-      --verde-acqua: #91cfd1;
-      --azzurro: #c0dbf3;
-      --blu: #5b6baf;
-      --viola: #b16aa8;
-      
-      --text-dark: #111111;
-      --text-muted: #555555;
-      --text-light: #ffffff;
-      --border-color: #e0ded7;
+      --arancio: #ED7354;
+      --giallo: #FFDE66;
+      --verdone: #0B7E66;
+      --verde-acqua: #91CFD1;
+      --blu: #5B6BAF;
+      --viola: #B16AA8;
+      --nero: #111111;
+      --bianco: #ffffff;
+      --avorio: #F7F6F2;
+      --avorio-scuro: #EDEADE;
+      --grigio: #6B6860;
+      --grigio-chiaro: #9B9890;
+      --bordo: #E5E2D9;
     }
+    * { box-sizing: border-box; }
+    body { font-family: 'Bricolage Grotesque', -apple-system, sans-serif; color: var(--nero); margin: 0; padding: 0; background: var(--bianco); -webkit-font-smoothing: antialiased; }
 
-    * {
-      box-sizing: border-box;
-    }
+    /* NAV */
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2.5rem; border-bottom: 1px solid var(--bordo); background: var(--bianco); position: sticky; top: 0; z-index: 100; }
+    .nav-logo { font-size: 15px; font-weight: 800; color: var(--nero); line-height: 1.2; letter-spacing: -0.01em; }
+    .nav-logo span { display: block; font-size: 10px; font-weight: 500; color: var(--grigio); letter-spacing: 0.06em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 13px; color: var(--nero); text-decoration: none; font-weight: 500; }
+    .nav-cta { background: var(--giallo); color: var(--nero) !important; padding: 8px 20px; border-radius: 100px; font-weight: 700 !important; font-size: 12px !important; letter-spacing: 0.04em; text-transform: uppercase; }
 
-    body { 
-      font-family: 'Bricolage Grotesque', -apple-system, sans-serif; 
-      color: var(--text-dark); 
-      margin: 0; 
-      padding: 0; 
-      background: var(--bg-light); 
-      -webkit-font-smoothing: antialiased; 
-    }
+    /* HERO */
+    .hero { background: var(--bianco); color: var(--nero); padding: 5rem 2.5rem; border-bottom: 1px solid var(--bordo); }
+    .hero-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--grigio); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .hero-tag::before { content: ""; width: 20px; height: 1px; background: var(--arancio); }
+    .hero h1 { font-size: clamp(40px, 7vw, 72px); font-weight: 800; line-height: 1.0; margin: 0 0 1.5rem 0; letter-spacing: -0.03em; color: var(--nero); }
+    .hero h1 em { font-style: normal; color: var(--arancio); display: block; }
+    .hero-body { font-size: 17px; line-height: 1.65; color: var(--grigio); max-width: 580px; margin-bottom: 1.25rem; font-weight: 300; }
+    .hero-list { margin: 0 0 2rem 0; padding: 0; list-style: none; color: var(--grigio); font-size: 15px; line-height: 1.7; max-width: 580px; display: flex; flex-direction: column; gap: 6px; }
+    .hero-list li { padding-left: 1.25rem; position: relative; }
+    .hero-list li::before { content: "\2014"; position: absolute; left: 0; color: var(--arancio); font-weight: 700; }
+    .hero-list strong { color: var(--nero); font-weight: 700; }
+    .hero-sub { font-size: 14px; color: var(--grigio-chiaro); margin-bottom: 2rem; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-btn-p { display: inline-block; padding: 13px 26px; background: var(--arancio); color: var(--bianco); text-decoration: none; font-size: 12px; font-weight: 700; border-radius: 100px; letter-spacing: 0.04em; text-transform: uppercase; transition: background 0.15s; }
+    .hero-btn-p:hover { background: var(--nero); }
+    .hero-btn-s { display: inline-block; padding: 13px 26px; background: transparent; color: var(--nero); text-decoration: none; font-size: 12px; font-weight: 700; border-radius: 100px; border: 1.5px solid var(--nero); letter-spacing: 0.04em; text-transform: uppercase; transition: all 0.15s; }
+    .hero-btn-s:hover { background: var(--nero); color: var(--bianco); }
 
-    /* HERO STYLING (Stile scuro/sfumato come da screenshot) */
-    .hero { 
-      background: linear-gradient(135deg, #131714 0%, #24241f 100%);
-      color: var(--text-light);
-      padding: 5rem 2.5rem; 
-      border-bottom: 1px solid rgba(255,255,255,0.1); 
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: 0; right: 0; left: 0;
-      height: 150px;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,100 L200,40 L400,80 L700,20 L1000,70 L1000,100 Z" fill="%23f4f2eb" opacity="0.05"/></svg>') bottom repeat-x;
-    }
-    .hero-tag { 
-      font-size: 13px; 
-      font-weight: 600; 
-      text-transform: uppercase; 
-      letter-spacing: 0.1em; 
-      color: var(--giallo); 
-      margin-bottom: 1.5rem; 
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .hero-tag::before {
-      content: "";
-      width: 20px;
-      height: 1px;
-      background: var(--giallo);
-    }
-    .hero h1 { 
-      font-size: 64px; 
-      font-weight: 300; 
-      line-height: 1.1; 
-      margin: 0 0 2rem 0; 
-      letter-spacing: -0.02em; 
-    }
-    .hero h1 em {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-style: italic;
-      font-weight: 400;
-      color: var(--giallo);
-      display: block;
-    }
-    .hero-body { 
-      font-size: 18px; 
-      line-height: 1.6; 
-      color: #b5b5b0; 
-      max-width: 600px;
-      margin-bottom: 1.5rem; 
-    }
-    .hero-list { 
-      margin: 0 0 2.5rem 0; 
-      padding-left: 1.25rem; 
-      color: #b5b5b0; 
-      font-size: 15px; 
-      line-height: 1.7; 
-      max-width: 600px;
-    }
-    .hero-list li { margin-bottom: 0.5rem; }
-    .hero-list strong { color: var(--text-light); }
-    .hero-sub { font-size: 15px; font-weight: 500; margin-bottom: 2rem; color: var(--giallo); }
-    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-    
-    .hero-btn-p { 
-      display: inline-block; 
-      padding: 14px 28px; 
-      background: var(--giallo); 
-      color: var(--bg-dark); 
-      text-decoration: none; 
-      font-size: 14px; 
-      font-weight: 700; 
-      border-radius: 4px; 
-      transition: all 0.2s;
-    }
-    .hero-btn-p:hover { background: #e0c255; }
-    .hero-btn-s { 
-      display: inline-block; 
-      padding: 14px 28px; 
-      background: transparent; 
-      color: var(--text-light); 
-      text-decoration: none; 
-      font-size: 14px; 
-      font-weight: 600; 
-      border-radius: 4px; 
-      border: 1px solid rgba(255,255,255,0.3); 
-      transition: all 0.2s;
-    }
-    .hero-btn-s:hover { border-color: var(--text-light); background: rgba(255,255,255,0.05); }
-    
-    /* CONVERSION BANNER (SOGGIORNO) */
-    .promo-banner {
-      background: #1e221f; 
-      color: var(--text-light);
-      padding: 2.5rem; 
-      border-bottom: 1px solid var(--border-color); 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      flex-wrap: wrap; 
-      gap: 1.5rem;
-    }
-    .promo-banner h4 { font-size: 18px; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--giallo); }
-    .promo-banner p { font-size: 14px; color: #b5b5b0; line-height: 1.6; margin: 0; max-width: 650px; }
-    .promo-btn { 
-      padding: 14px 24px; 
-      background: transparent; 
-      color: var(--giallo); 
-      font-size: 12px; 
-      font-weight: 700; 
-      letter-spacing: 0.05em; 
-      text-transform: uppercase; 
-      text-decoration: none; 
-      border: 1px solid var(--giallo);
-      border-radius: 4px;
-      transition: all 0.2s;
-    }
-    .promo-btn:hover { background: var(--giallo); color: var(--bg-dark); }
+    /* PROMO BANNER */
+    .promo-banner { background: #1A1C1A; color: var(--bianco); padding: 2rem 2.5rem; border-bottom: 1px solid var(--bordo); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .promo-banner h4 { font-size: 16px; font-weight: 700; margin: 0 0 0.35rem 0; color: var(--giallo); }
+    .promo-banner p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; max-width: 600px; font-weight: 300; }
+    .promo-btn { padding: 12px 22px; background: transparent; color: var(--giallo); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--giallo); border-radius: 100px; white-space: nowrap; transition: all 0.15s; }
+    .promo-btn:hover { background: var(--giallo); color: var(--nero); }
 
-    /* SEZIONI CONTENUTO */
-    .section-wrap { padding: 5rem 2.5rem; max-width: 1200px; margin: 0 auto; }
-    .section-tag { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--arancio); margin-bottom: 0.5rem; }
-    
-    .section-title { font-size: 48px; font-weight: 400; letter-spacing: -0.02em; margin: 0 0 1rem 0; }
-    .section-title em { font-style: italic; font-weight: 400; color: var(--verdone); }
-    .section-desc { font-size: 16px; color: var(--text-muted); max-width: 600px; margin-bottom: 3rem; line-height: 1.6; }
-    .section-rule { border: 0; border-top: 1px solid var(--border-color); margin: 3rem 0; }
-    
+    /* SEZIONI */
+    .section-wrap { padding: 4rem 2.5rem; max-width: 1200px; margin: 0 auto; }
+    .section-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--grigio); margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; margin: 0 0 0.75rem 0; line-height: 1.1; }
+    .section-title em { font-style: normal; color: var(--arancio); }
+    .section-desc { font-size: 14px; color: var(--grigio); max-width: 560px; margin-bottom: 2.5rem; line-height: 1.65; }
+    .section-rule { border: 0; border-top: 1px solid var(--bordo); margin: 0 0 2.5rem 0; }
+
     /* INFO BANNER */
-    .info-banner { background: var(--card-bg); padding: 2rem; border-radius: 16px; margin-bottom: 3.5rem; border-left: 4px solid var(--arancio); box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
-    .info-banner-title { font-size: 16px; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
-    .info-banner-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-    
-    /* GRIGLIA SCHEDE & CARDS */
-    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem; }
-    @media (max-width: 768px) { .cards-grid { grid-template-columns: 1fr; gap: 2rem; } }
-    
-    .card { border: 1px solid var(--border-color); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; background: var(--card-bg); transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.04); }
-    .card-img-wrap { height: 240px; overflow: hidden; background: #ebdccb; position: relative; }
-    .card-img { width: 100%; height: 100%; object-fit: cover; }
-    .card-body { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
-    
-    /* Tag Categorie Colorati come da screenshot */
-    .card-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-    .cat-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; background: #eee; }
-    .cat-badge.wellness { background: rgba(237, 115, 84, 0.15); color: #c44e32; }
-    .cat-badge.musica { background: rgba(91, 107, 175, 0.15); color: #3b498c; }
-    .cat-badge.natura { background: rgba(11, 126, 102, 0.15); color: #085c4a; }
-    .cat-badge.famiglia { background: rgba(177, 106, 168, 0.15); color: #8e4480; }
-    .cat-badge.arte { background: rgba(145, 207, 209, 0.2); color: #1f6b6e; }
-    .cat-badge.sport { background: rgba(255, 222, 102, 0.25); color: #8c710b; }
-    
-    .card-date { font-size: 13px; font-weight: 700; color: var(--arancio); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-    .card-title { font-size: 26px; font-weight: 400; margin: 0 0 1rem 0; letter-spacing: -0.01em; line-height: 1.2; }
-    .card-title em { font-style: italic; color: var(--verdone); }
-    .card-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; flex-grow: 1; }
-    
-    .perfetto-per { margin-bottom: 2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; border-top: 1px solid var(--border-color); padding-top: 1rem; }
-    .perfetto-label { font-size: 11px; font-weight: 700; color: #999; margin-right: 0.25rem; text-transform: uppercase; }
-    .perfetto-tag { font-size: 12px; background: #f4f2eb; padding: 4px 12px; border-radius: 100px; font-weight: 500; color: var(--text-dark); }
-    
-    .card-btn { background: transparent; color: var(--text-dark); border: 0; padding: 0 0 4px 0; font-size: 14px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid var(--text-dark); width: max-content; text-transform: uppercase; letter-spacing: 0.05em; }
+    .info-banner { background: var(--avorio); padding: 1.25rem 1.5rem; border-radius: 12px; margin-bottom: 2.5rem; border-left: 3px solid var(--giallo); }
+    .info-banner-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; color: var(--nero); }
+    .info-banner-text { font-size: 13px; color: var(--grigio); line-height: 1.6; }
+
+    /* GRIGLIA CARD */
+    .cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 768px) { .cards-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+    /* CARD */
+    .card { border: 1.5px solid var(--bordo); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; background: var(--bianco); transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .card-img-wrap { height: 220px; overflow: hidden; }
+    .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .card:hover .card-img { transform: scale(1.03); }
+    .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+
+    /* CATEGORIE */
+    .card-cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
+    .cat-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 9px; border-radius: 4px; }
+    .cat-badge.wellness { background: rgba(145,207,209,0.2); color: #1f6b6e; }
+    .cat-badge.musica { background: rgba(177,106,168,0.15); color: var(--viola); }
+    .cat-badge.natura { background: rgba(11,126,102,0.12); color: var(--verdone); }
+    .cat-badge.famiglia { background: rgba(11,126,102,0.12); color: var(--verdone); }
+    .cat-badge.arte { background: rgba(177,106,168,0.15); color: var(--viola); }
+    .cat-badge.sport { background: rgba(237,115,84,0.12); color: var(--arancio); }
+    .cat-badge.giallo { background: rgba(255,222,102,0.25); color: #7A5E00; }
+    .cat-badge.verdone { background: rgba(11,126,102,0.12); color: var(--verdone); }
+    .cat-badge.arancio { background: rgba(237,115,84,0.12); color: var(--arancio); }
+
+    .card-date { font-size: 11px; font-weight: 700; color: var(--arancio); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .card-title { font-size: 22px; font-weight: 800; margin: 0 0 0.75rem 0; letter-spacing: -0.01em; line-height: 1.15; }
+    .card-title em { font-style: normal; color: var(--verdone); }
+    .card-desc { font-size: 13px; color: var(--grigio); line-height: 1.65; margin-bottom: 1.25rem; flex-grow: 1; }
+    .perfetto-per { margin-bottom: 1.25rem; display: flex; flex-wrap: wrap; gap: 5px; align-items: center; border-top: 1px solid var(--bordo); padding-top: 0.75rem; }
+    .perfetto-label { font-size: 10px; font-weight: 700; color: var(--grigio-chiaro); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 2px; }
+    .perfetto-tag { font-size: 11px; background: var(--avorio); padding: 3px 10px; border-radius: 100px; font-weight: 500; color: var(--nero); border: 1px solid var(--bordo); }
+    .card-btn { background: transparent; color: var(--nero); border: 0; padding: 0 0 3px 0; font-size: 11px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; border-bottom: 2px solid var(--nero); width: max-content; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'Bricolage Grotesque', sans-serif; transition: color 0.15s, border-color 0.15s; }
     .card-btn:hover { color: var(--arancio); border-bottom-color: var(--arancio); }
-    .card-btn .arr { font-size: 16px; transition: transform 0.2s; }
-    .card-btn.open .arr { transform: translate(3px, 3px) rotate(45deg); }
-    
-    /* PANNELLO DETTAGLIO INTERNO (ACCORDION) */
-    .detail-panel { display: none; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; margin-bottom: 2.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-    .detail-panel.open { display: block; animation: fadeIn 0.3s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .detail-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1.25rem; margin-bottom: 2rem; }
-    .detail-header-title { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
-    .detail-close { background: #f4f2eb; border: 0; font-size: 14px; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; color: var(--text-dark); display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
-    .detail-close:hover { background: var(--arancio); color: white; }
-    
-    .detail-day-label { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--verdone); margin: 2rem 0 1.5rem 0; padding-bottom: 0.4rem; border-bottom: 2px solid var(--verdone); display: inline-block; }
-    .detail-slot { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px dashed var(--border-color); }
+    .card-btn .arr { font-size: 14px; transition: transform 0.2s; }
+    .card-btn.open .arr { transform: translateX(3px); }
+
+    /* DETAIL PANEL */
+    .detail-panel { display: none; background: var(--bianco); border: 1.5px solid var(--bordo); border-radius: 16px; margin-bottom: 2rem; overflow: hidden; }
+    .detail-panel.open { display: block; animation: fadeIn 0.25s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .detail-header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; background: var(--avorio); border-bottom: 1px solid var(--bordo); }
+    .detail-header-title { font-size: 14px; font-weight: 700; color: var(--nero); }
+    .detail-close { background: var(--bianco); border: 1.5px solid var(--bordo); font-size: 13px; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; color: var(--nero); display: flex; align-items: center; justify-content: center; transition: all 0.15s; font-family: 'Bricolage Grotesque', sans-serif; }
+    .detail-close:hover { background: var(--arancio); color: var(--bianco); border-color: var(--arancio); }
+    .detail-content { padding: 1.5rem 2rem; }
+    .detail-day-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--arancio); margin: 1.5rem 0 1rem 0; padding-bottom: 0.5rem; border-bottom: 2px solid var(--arancio); display: inline-block; }
+    .detail-day-label:first-child { margin-top: 0; }
+    .detail-slot { display: grid; grid-template-columns: 120px 1fr; gap: 1.25rem; padding: 10px 0; border-bottom: 1px solid var(--bordo); }
+    .detail-slot:last-of-type { border-bottom: none; }
     @media (max-width: 576px) { .detail-slot { grid-template-columns: 1fr; gap: 0.5rem; } }
-    .detail-time { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #999; letter-spacing: 0.05em; padding-top: 4px; }
-    .detail-activities { display: flex; flex-direction: column; gap: 1rem; }
-    .detail-activity { font-size: 15px; line-height: 1.5; color: var(--text-dark); }
-    
-    /* BADGES INTERNI DI FLUSSO */
-    .who { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; margin-right: 0.5rem; display: inline-block; letter-spacing: 0.03em; border-radius: 4px; }
-    .who-adults { background: rgba(91, 107, 175, 0.1); color: var(--blu); }
-    .who-kids { background: rgba(177, 106, 168, 0.1); color: var(--viola); }
-    .who-together { background: #111; color: #fff; }
-    .who-event { background: var(--arancio); color: #fff; }
-    .who-arrivo { background: #eee; color: #666; }
-    
-    .abadge { font-size: 11px; font-weight: 700; padding: 3px 10px; display: inline-block; margin-left: 0.5rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.02em; }
-    .abadge-book { background: #fff0ea; color: #c44e32; border: 1px solid rgba(237,115,84,0.3); }
-    .abadge-free { background: #eefaf6; color: #085c4a; border: 1px solid rgba(11,126,102,0.2); }
-    .abadge-warn { background: #fffde6; color: #8c710b; border: 1px solid rgba(255,222,102,0.5); }
-    
-    .detail-note { font-size: 14px; color: var(--text-muted); line-height: 1.6; background: #faf9f5; padding: 1.25rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid var(--border-color); }
-    .detail-fb { font-size: 14px; color: var(--text-dark); line-height: 1.6; background: #fbf7f0; padding: 1.25rem; border-radius: 8px; margin-top: 0.5rem; border-left: 4px solid var(--verdone); }
-    .dcta { display: inline-block; font-size: 13px; font-weight: 700; color: var(--text-dark); text-decoration: none; margin-top: 0.5rem; border-bottom: 2px solid var(--arancio); padding-bottom: 2px; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.03em; }
+    .detail-time { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--grigio-chiaro); letter-spacing: 0.06em; padding-top: 4px; }
+    .detail-activities { display: flex; flex-direction: column; gap: 8px; }
+    .detail-activity { font-size: 13px; line-height: 1.5; color: var(--nero); }
+    .who { font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 2px 7px; margin-right: 5px; display: inline-block; letter-spacing: 0.04em; border-radius: 4px; }
+    .who-adults { background: rgba(91,107,175,0.1); color: var(--blu); }
+    .who-kids { background: rgba(177,106,168,0.1); color: var(--viola); }
+    .who-together { background: var(--nero); color: var(--bianco); }
+    .who-event { background: var(--arancio); color: var(--bianco); }
+    .who-arrivo { background: var(--avorio); color: var(--grigio); }
+    .abadge { font-size: 9px; font-weight: 700; padding: 2px 7px; display: inline-block; margin-left: 5px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.03em; }
+    .abadge-book { background: rgba(237,115,84,0.1); color: var(--arancio); border: 1px solid rgba(237,115,84,0.25); }
+    .abadge-free { background: rgba(11,126,102,0.1); color: var(--verdone); border: 1px solid rgba(11,126,102,0.2); }
+    .abadge-warn { background: rgba(255,222,102,0.2); color: #7A5E00; border: 1px solid rgba(255,222,102,0.5); }
+    .detail-note { font-size: 13px; color: var(--grigio); line-height: 1.6; background: var(--avorio); padding: 1rem 1.25rem; border-radius: 8px; margin-top: 4px; }
+    .detail-fb { font-size: 13px; color: var(--nero); line-height: 1.6; background: #FFFBEE; padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin-top: 4px; border-left: 3px solid var(--giallo); }
+    .detail-fb strong { font-weight: 700; }
+    .dcta { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: var(--nero); text-decoration: none; margin-top: 6px; border-bottom: 2px solid var(--arancio); padding-bottom: 2px; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.04em; transition: color 0.15s; font-family: 'Bricolage Grotesque', sans-serif; }
     .dcta:hover { color: var(--arancio); }
-    .detail-sep { height: 1px; background: var(--border-color); margin: 2.5rem 0; }
-    
-    /* CHECKLIST DI PRENOTAZIONE (Box Giallo caratteristico dagli screenshot) */
-    .checklist { background: #fdfaf0; padding: 2rem; margin-top: 2.5rem; border-radius: 12px; border: 1px solid #f3ebd3; }
-    .checklist-title { font-size: 13px; font-weight: 800; margin-bottom: 1.25rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dark); }
-    .checklist-items { display: flex; flex-direction: column; gap: 1rem; }
-    .checklist-item { display: flex; align-items: center; gap: 1rem; font-size: 14px; font-weight: 500; }
-    .checklist-num { width: 24px; height: 24px; background: var(--giallo); color: #574603; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; border-radius: 4px; flex-shrink: 0; }
-    .checklist-item a { color: var(--text-dark); text-decoration: none; border-bottom: 1px solid var(--text-dark); padding-bottom: 1px; transition: color 0.2s; }
+    .detail-sep { height: 1px; background: var(--bordo); margin: 1.5rem 0; }
+
+    /* CHECKLIST */
+    .checklist { background: #FFFBEE; padding: 1.5rem; margin-top: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,222,102,0.4); }
+    .checklist-title { font-size: 11px; font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--nero); }
+    .checklist-items { display: flex; flex-direction: column; gap: 8px; }
+    .checklist-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; }
+    .checklist-num { width: 22px; height: 22px; background: var(--giallo); color: #574603; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; border-radius: 4px; flex-shrink: 0; }
+    .checklist-item a { color: var(--nero); text-decoration: none; border-bottom: 1px solid var(--bordo); padding-bottom: 1px; transition: color 0.15s, border-color 0.15s; }
     .checklist-item a:hover { color: var(--arancio); border-bottom-color: var(--arancio); }
-    
-    /* PICCOLE PAUSE ALPINE (Sezione inferiore) */
-    .pause-section { padding: 6rem 2.5rem; background: #eceae1; border-top: 1px solid var(--border-color); }
-    .pause-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
-    .pause-card { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border-color); padding: 2rem; display: flex; flex-direction: column; transition: transform 0.2s; }
-    .pause-card:hover { transform: translateY(-4px); }
-    .pause-emoji { font-size: 28px; margin-bottom: 1rem; display: block; }
-    .pause-duration { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--arancio); letter-spacing: 0.05em; margin-bottom: 0.5rem; }
-    .pause-title { font-size: 22px; font-weight: 600; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
-    .pause-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.5rem; flex-grow: 1; }
-    .pause-steps { background: var(--bg-light); padding: 1.25rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; border-left: 3px solid var(--blu); }
-    .pause-step { font-size: 13px; display: flex; gap: 0.5rem; line-height: 1.4; color: var(--text-dark); }
-    .pause-step-num { font-weight: 800; color: var(--blu); }
-    .pause-cta { font-size: 13px; font-weight: 700; color: var(--text-dark); text-decoration: none; border-bottom: 2px solid var(--blu); padding-bottom: 2px; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.03em; }
-    .pause-cta:hover { color: var(--blu); }
-    
-    .bottom-note { text-align: center; padding: 4rem 2.5rem; font-size: 13px; color: var(--text-muted); border-top: 1px solid var(--border-color); line-height: 1.6; background: #e4e2d9; }
+
+    /* PICCOLE PAUSE */
+    .pause-section { padding: 5rem 2.5rem; background: var(--avorio); border-top: 1px solid var(--bordo); }
+    .pause-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+    .pause-card { background: var(--bianco); border-radius: 14px; border: 1.5px solid var(--bordo); padding: 1.75rem; display: flex; flex-direction: column; transition: box-shadow 0.2s; }
+    .pause-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .pause-emoji { font-size: 26px; margin-bottom: 0.75rem; display: block; }
+    .pause-duration { font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--arancio); letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .pause-title { font-size: 20px; font-weight: 800; margin-bottom: 0.6rem; letter-spacing: -0.01em; line-height: 1.2; }
+    .pause-desc { font-size: 13px; color: var(--grigio); line-height: 1.55; margin-bottom: 1.25rem; flex-grow: 1; }
+    .pause-steps { background: var(--avorio); padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 7px; border-left: 3px solid var(--verdone); }
+    .pause-step { font-size: 12px; display: flex; gap: 7px; line-height: 1.45; color: var(--nero); }
+    .pause-step-num { font-weight: 800; color: var(--verdone); flex-shrink: 0; }
+    .pause-cta { font-size: 11px; font-weight: 700; color: var(--nero); text-decoration: none; border-bottom: 2px solid var(--arancio); padding-bottom: 2px; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.04em; transition: color 0.15s; }
+    .pause-cta:hover { color: var(--arancio); }
+
+    .bottom-note { text-align: center; padding: 3rem 2.5rem; font-size: 12px; color: var(--grigio-chiaro); border-top: 1px solid var(--bordo); line-height: 1.7; background: var(--avorio-scuro); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 3rem 1.25rem; }
+      .promo-banner { padding: 1.5rem 1.25rem; }
+      .section-wrap { padding: 3rem 1.25rem; }
+      .pause-section { padding: 3rem 1.25rem; }
+    }
   </style>
 </head>
 <body>
 
+<nav>
+  <div class="nav-logo">San Bernardino <span>SummerVillage 2026</span></div>
+  <div class="nav-links">
+    <a href="#">Calendario</a>
+    <a href="#">Mappa</a>
+    <a href="#" class="nav-cta">Ticket</a>
+  </div>
+</nav>
+
 <div class="hero">
-  <div class="hero-tag">Summer Village . 3 luglio – 16 agosto 2026</div>
+  <div class="hero-tag">Summer Village &middot; 3 luglio &ndash; 16 agosto 2026</div>
   <h1>Lasciati<br><em>ispirare</em></h1>
-  <p class="hero-body">Abbiamo costruito l'estate per adattarsi al tuo tempo, che tu stia pianificando una fuga dalla pianura o che tu sia già nel villaggio. A meno di due ore da Milano e Lugano.</p>
+  <p class="hero-body">Abbiamo costruito l&rsquo;estate per adattarsi al tuo tempo, che tu stia pianificando una fuga dalla pianura o che tu sia gi&agrave; nel villaggio. A meno di due ore da Milano e Lugano.</p>
   <ul class="hero-list">
     <li><strong>Giornate e weekend:</strong> programmi completi tra natura, eventi e relax.</li>
-    <li><strong>Piccole pause alpine:</strong> combinazioni da 2 o 3 ore per arricchire la giornata in modo spontaneo.</li>
+    <li><strong>Piccole pause alpine:</strong> combinazioni da 2&ndash;3 ore per arricchire la giornata in modo spontaneo.</li>
   </ul>
   <p class="hero-sub">Scorri, trova il tuo mood e prenota i singoli posti.</p>
   <div class="hero-ctas">
@@ -294,165 +207,71 @@
 <div class="promo-banner">
   <div>
     <h4>Vuoi estendere la tua esperienza in quota?</h4>
-    <p>Evita il traffico del rientro verso la pianura. Prenota una camera all'Albergo Brocco &amp; Posta direttamente nel centro del villaggio per vivere i programmi del weekend in totale relax.</p>
+    <p>Evita il traffico del rientro verso la pianura. Prenota una camera all&rsquo;Albergo Brocco &amp; Posta direttamente nel centro del villaggio per vivere i programmi del weekend in totale relax.</p>
   </div>
-  <a href="#" class="promo-btn">Verifica disponibilità camere</a>
+  <a href="#" class="promo-btn">Verifica disponibilit&agrave; camere</a>
 </div>
 
 <div class="section-wrap" id="giornate">
   <div class="section-tag">Esperienze</div>
   <div class="section-title">Giornate e <em>weekend</em></div>
-  <p class="section-desc">Cinque programmi già pensati per te. Puoi seguirli per intero o scegliere solo le attività che preferisci.</p>
+  <p class="section-desc">Cinque programmi gi&agrave; pensati per te. Puoi seguirli per intero o scegliere solo le attivit&agrave; che preferisci.</p>
   <hr class="section-rule">
   <div class="info-banner">
     <div class="info-banner-title">Come funziona</div>
-    <div class="info-banner-text">Puoi partecipare a tutto il programma o solo ad alcune attività. Ogni esperienza si prenota separatamente, i posti sono limitati. Gli eventi SBSA si prenotano tramite il nostro sistema. Le attività partner direttamente con l'organizzatore.</div>
+    <div class="info-banner-text">Puoi partecipare a tutto il programma o solo ad alcune attivit&agrave;. <strong>Ogni esperienza si prenota separatamente</strong> &mdash; i posti sono limitati. Gli eventi SBSA si prenotano tramite il nostro sistema. Le attivit&agrave; partner direttamente con l&rsquo;organizzatore.</div>
   </div>
 
   <div class="cards-grid">
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80" alt="Montagna"></div>
       <div class="card-body">
-        <div class="card-cats">
-          <span class="cat-badge wellness">🧘 Wellness</span>
-          <span class="cat-badge musica">🎵 Musica</span>
-          <span class="cat-badge natura">🌿 Natura</span>
-        </div>
-        <div class="card-date">Weekend . 25 e 26 luglio</div>
+        <div class="card-cats"><span class="cat-badge wellness">&#x1F9D8; Wellness</span><span class="cat-badge musica">&#x1F3B5; Musica</span><span class="cat-badge natura">&#x1F33F; Natura</span></div>
+        <div class="card-date">Weekend &middot; 25 e 26 luglio</div>
         <div class="card-title">Natura, musica <em>e rigenerazione</em></div>
         <div class="card-desc">Una fuga dal caldo cittadino raggiungibile in meno di due ore da Milano e Lugano. Esperienza Innerwalk al passo, spa al Brocco e concerto Greenhope sotto le stelle.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Coppie</span><span class="perfetto-tag">Wellness lovers</span><span class="perfetto-tag">Chi cerca silenzio</span></div>
-        <button class="card-btn" onclick="toggleDetail('detail-1',this)">Scopri il programma <span class="arr">→</span></button>
+        <button class="card-btn" onclick="toggleDetail('detail-1',this)">Scopri il programma <span class="arr">&rarr;</span></button>
       </div>
     </div>
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1533294160620-855a3e2cb782?w=700&q=80" alt="Concerto"></div>
       <div class="card-body">
-        <div class="card-cats">
-          <span class="cat-badge musica">🎵 Musica live</span>
-          <span class="cat-badge famiglia">👨‍👩‍👧‍👦 Famiglia</span>
-          <span class="cat-badge sport">🇨🇭 CH Svizzera</span>
-        </div>
-        <div class="card-date">Giornata . 1 agosto</div>
+        <div class="card-cats"><span class="cat-badge musica">&#x1F3B5; Musica live</span><span class="cat-badge famiglia">&#x1F46A; Famiglia</span><span class="cat-badge sport">&#x1F1E8;&#x1F1ED; Svizzera</span></div>
+        <div class="card-date">Giornata &middot; 1 agosto</div>
         <div class="card-title">Festa Nazionale <em>in quota</em></div>
-        <div class="card-desc">Il 1 agosto in montagna, come si deve. Un villaggio in festa, il multisport per i bambini nel pomeriggio e Davide Van De Sfroos sul palco della Raiffeisen Alpine Lounge la sera.</div>
+        <div class="card-desc">Il 1&deg; agosto in montagna, come si deve. Un villaggio in festa, il Multisport per i bambini nel pomeriggio e Davide Van De Sfroos sul palco della Raiffeisen Alpine Lounge la sera.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Famiglie</span><span class="perfetto-tag">Ticinesi e lombardi</span><span class="perfetto-tag">Amanti della musica</span></div>
-        <button class="card-btn" onclick="toggleDetail('detail-2',this)">Scopri il programma <span class="arr">→</span></button>
+        <button class="card-btn" onclick="toggleDetail('detail-2',this)">Scopri il programma <span class="arr">&rarr;</span></button>
       </div>
     </div>
   </div>
 
   <div class="detail-panel" id="detail-1">
-    <div class="detail-header">
-      <div class="detail-header-title">Natura, musica e rigenerazione . 25 e 26 luglio</div>
-      <button class="detail-close" onclick="closeDetail('detail-1')">✕</button>
-    </div>
+    <div class="detail-header"><div class="detail-header-title">Natura, musica e rigenerazione &middot; 25 e 26 luglio</div><button class="detail-close" onclick="closeDetail('detail-1')">&#x2715;</button></div>
     <div class="detail-content">
       <div class="detail-day-label">Sabato 25 luglio</div>
-      <div class="detail-slot">
-        <div class="detail-time">Mattina</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-adults">adulti</span> <strong>Esperienza Innerwalk</strong>, passeggiata meditativa al passo + spa al Brocco <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-note">Un'unica esperienza guidata: camminata consapevole con cuffie wireless al passo, seguita dall'accesso alla spa del Brocco. Si prenota como pacchetto unico.</div>
-          <a class="dcta" href="#">Prenota l'esperienza Innerwalk →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pranzo</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-together">insieme</span> Brocco &amp; Posta <span class="abadge abadge-free">Libero</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Iscrizioni Greenhope Hike Parade</div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Sera</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> Greenhope Hike Parade, concerto alla Raiffeisen Alpine Lounge <span class="abadge abadge-book">Prenotazione richiesta</span></div>
-          <div class="detail-fb"><strong>Dopo il concerto:</strong> la Piazzetta Brocco è a due passi per un ultimo aperitivo sotto le stelle prima di rientrare.</div>
-        </div>
-      </div>
+      <div class="detail-slot"><div class="detail-time">Mattina</div><div class="detail-activities"><div class="detail-activity"><span class="who who-adults">Adulti</span> <strong>Esperienza Innerwalk</strong> &mdash; passeggiata meditativa al passo + spa al Brocco <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-note">Un&rsquo;unica esperienza guidata: camminata consapevole con cuffie wireless al passo, seguita dall&rsquo;accesso alla spa del Brocco. Si prenota come pacchetto unico.</div><a class="dcta" href="#">Prenota l&rsquo;esperienza Innerwalk &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Pranzo</div><div class="detail-activities"><div class="detail-activity"><span class="who who-together">Insieme</span> Brocco &amp; Posta <span class="abadge abadge-free">Libero</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-adults">Adulti</span> Iscrizioni Greenhope Hike Parade</div></div></div>
+      <div class="detail-slot"><div class="detail-time">Sera</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> Greenhope Hike Parade &mdash; concerto alla Raiffeisen Alpine Lounge <span class="abadge abadge-book">Prenotazione richiesta</span></div><div class="detail-fb"><strong>Dopo il concerto:</strong> la Piazzetta Brocco &egrave; a due passi per un ultimo aperitivo sotto le stelle prima di rientrare.</div></div></div>
       <div class="detail-sep"></div>
       <div class="detail-day-label">Domenica 26 luglio</div>
-      <div class="detail-slot">
-        <div class="detail-time">Mattina</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> Greenhope Hike Parade, escursione guidata a Capanna Confin <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-note">L'escursione richiede l'utilizzo degli impianti di risalita. Assicurati di avere uno skipass estivo valido o il biglietto della cabinovia prima della partenza.</div>
-          <a class="dcta" href="#">Acquista biglietto cabinovia online →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pranzo</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-together">insieme</span> Capanna Confin <span class="abadge abadge-free">Libero</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Sono Natura, passeggiata meditativa con Rising Spirits <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-        </div>
-      </div>
-      <div class="checklist">
-        <div class="checklist-title">La tua checklist di prenotazione</div>
-        <div class="checklist-items">
-          <div class="checklist-item"><div class="checklist-num">1</div><a href="#">Prenota l'esperienza Innerwalk (passeggiata + spa)</a></div>
-          <div class="checklist-item"><div class="checklist-num">2</div><a href="#">Iscriviti alla Greenhope Hike Parade e acquista il biglietto impianti</a></div>
-          <div class="checklist-item"><div class="checklist-num">3</div><a href="#">Prenota la passeggiata Sono Natura (Rising Spirits)</a></div>
-        </div>
-      </div>
+      <div class="detail-slot"><div class="detail-time">Mattina</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> Greenhope Hike Parade &mdash; escursione guidata a Capanna Confin <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-note">L&rsquo;escursione richiede l&rsquo;utilizzo degli impianti di risalita. Assicurati di avere uno skipass estivo valido o il biglietto della cabinovia prima della partenza.</div><a class="dcta" href="#">Acquista biglietto cabinovia online &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Pranzo</div><div class="detail-activities"><div class="detail-activity"><span class="who who-together">Insieme</span> Capanna Confin <span class="abadge abadge-free">Libero</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-adults">Adulti</span> Sono Natura &mdash; passeggiata meditativa con Rising Spirits <span class="abadge abadge-book">Iscrizione richiesta</span></div></div></div>
+      <div class="checklist"><div class="checklist-title">La tua checklist di prenotazione</div><div class="checklist-items"><div class="checklist-item"><div class="checklist-num">1</div><a href="#">Prenota l&rsquo;esperienza Innerwalk (passeggiata + spa)</a></div><div class="checklist-item"><div class="checklist-num">2</div><a href="#">Iscriviti alla Greenhope Hike Parade e acquista il biglietto impianti</a></div><div class="checklist-item"><div class="checklist-num">3</div><a href="#">Prenota la passeggiata Sono Natura (Rising Spirits)</a></div></div></div>
     </div>
   </div>
 
   <div class="detail-panel" id="detail-2">
-    <div class="detail-header">
-      <div class="detail-header-title">Festa Nazionale in quota . 1 agosto</div>
-      <button class="detail-close" onclick="closeDetail('detail-2')">✕</button>
-    </div>
+    <div class="detail-header"><div class="detail-header-title">Festa Nazionale in quota &middot; 1 agosto</div><button class="detail-close" onclick="closeDetail('detail-2')">&#x2715;</button></div>
     <div class="detail-content">
-      <div class="detail-slot">
-        <div class="detail-time">Mattina</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-adults">adulti</span> <strong>Esperienza Innerwalk</strong>, passeggiata + spa <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <a class="dcta" href="#">Prenota l'esperienza Innerwalk →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pranzo</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-together">insieme</span> Villaggio / Brocco &amp; Posta, atmosfera Festa Nazionale <span class="abadge abadge-free">Libero</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> SanBe Kids multisport con Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Villaggio e attività libere <span class="abadge abadge-free">Libero</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Sera</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> SanBe Sound con Davide Van De Sfroos alla Raiffeisen Alpine Lounge <span class="abadge abadge-book">Prenotazione richiesta</span></div>
-          <div class="detail-note">Il concerto si tiene in quota alla Raiffeisen Alpine Lounge. L'accesso è incluso nel biglietto dell'evento, ma è necessario convalidare l'accesso agli impianti.</div>
-          <a class="dcta" href="#">Acquista biglietto concerto + impianti →</a>
-          <div class="detail-fb"><strong>Prima del concerto:</strong> il Brocco &amp; Posta è aperto per cena, inizia la serata con calma nel villaggio prima di salire alla Raiffeisen Alpine Lounge.</div>
-        </div>
-      </div>
-      <div class="checklist">
-        <div class="checklist-title">La tua checklist di prenotazione</div>
-        <div class="checklist-items">
-          <div class="checklist-item"><div class="checklist-num">1</div><a href="#">Prenota l'esperienza Innerwalk</a></div>
-          <div class="checklist-item"><div class="checklist-num">2</div><a href="#">Iscrivi i bambini al multisport (Fullski)</a></div>
-          <div class="checklist-item"><div class="checklist-num">3</div><a href="#">Prenota il biglietto integrato per SanBe Sound</a></div>
-          <div class="checklist-item"><div class="checklist-num">4</div><a href="#">Riserva il tavolo per pranzo (Brocco &amp; Posta)</a></div>
-        </div>
-      </div>
+      <div class="detail-slot"><div class="detail-time">Mattina</div><div class="detail-activities"><div class="detail-activity"><span class="who who-adults">Adulti</span> <strong>Esperienza Innerwalk</strong> &mdash; passeggiata + spa <span class="abadge abadge-book">Iscrizione richiesta</span></div><a class="dcta" href="#">Prenota l&rsquo;esperienza Innerwalk &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Pranzo</div><div class="detail-activities"><div class="detail-activity"><span class="who who-together">Insieme</span> Villaggio / Brocco &amp; Posta &mdash; atmosfera Festa Nazionale <span class="abadge abadge-free">Libero</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> SanBe Kids Multisport con Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> Villaggio e attivit&agrave; libere <span class="abadge abadge-free">Libero</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Sera</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> SanBe Sound con Davide Van De Sfroos alla Raiffeisen Alpine Lounge <span class="abadge abadge-book">Prenotazione richiesta</span></div><div class="detail-note">Il concerto si tiene in quota alla Raiffeisen Alpine Lounge. L&rsquo;accesso &egrave; incluso nel biglietto dell&rsquo;evento, ma &egrave; necessario convalidare l&rsquo;accesso agli impianti.</div><a class="dcta" href="#">Acquista biglietto concerto + impianti &rarr;</a><div class="detail-fb"><strong>Prima del concerto:</strong> il Brocco &amp; Posta &egrave; aperto per cena &mdash; inizia la serata con calma nel villaggio prima di salire alla Raiffeisen Alpine Lounge.</div></div></div>
+      <div class="checklist"><div class="checklist-title">La tua checklist di prenotazione</div><div class="checklist-items"><div class="checklist-item"><div class="checklist-num">1</div><a href="#">Prenota l&rsquo;esperienza Innerwalk</a></div><div class="checklist-item"><div class="checklist-num">2</div><a href="#">Iscrivi i bambini al Multisport (Fullski)</a></div><div class="checklist-item"><div class="checklist-num">3</div><a href="#">Prenota il biglietto integrato per SanBe Sound</a></div><div class="checklist-item"><div class="checklist-num">4</div><a href="#">Riserva il tavolo per pranzo (Brocco &amp; Posta)</a></div></div></div>
     </div>
   </div>
 
@@ -460,156 +279,52 @@
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=80" alt="Laboratorio"></div>
       <div class="card-body">
-        <div class="card-cats">
-          <span class="cat-badge famiglia">👨‍👩‍👧‍👦 Famiglia</span>
-          <span class="cat-badge arte">🎨 Arte</span>
-        </div>
-        <div class="card-date">Giornata . 4 agosto</div>
+        <div class="card-cats"><span class="cat-badge famiglia">&#x1F46A; Famiglia</span><span class="cat-badge arte">&#x1F3A8; Arte</span></div>
+        <div class="card-date">Giornata &middot; 4 agosto</div>
         <div class="card-title">Stessa tecnica, <em>occhi diversi</em></div>
         <div class="card-desc">Un laboratorio parallelo di cianotipia botanica. I bambini creano esplorando la natura al mattino, gli adulti approfondiscono la tecnica al pomeriggio.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Genitori e figli</span><span class="perfetto-tag">Creativi</span></div>
-        <button class="card-btn" onclick="toggleDetail('detail-3',this)">Scopri il programma <span class="arr">→</span></button>
+        <button class="card-btn" onclick="toggleDetail('detail-3',this)">Scopri il programma <span class="arr">&rarr;</span></button>
       </div>
     </div>
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=700&q=80" alt="Trail"></div>
       <div class="card-body">
-        <div class="card-cats">
-          <span class="cat-badge sport">🏃 Sport</span>
-          <span class="cat-badge arancio">🍲 Sapori</span>
-          <span class="cat-badge famiglia">👨‍👩‍👧‍👦 Famiglia</span>
-        </div>
-        <div class="card-date">Weekend . 7 e 8 agosto</div>
+        <div class="card-cats"><span class="cat-badge sport">&#x1F3C3; Sport</span><span class="cat-badge arancio">&#x1F372; Sapori</span><span class="cat-badge famiglia">&#x1F46A; Famiglia</span></div>
+        <div class="card-date">Weekend &middot; 7 e 8 agosto</div>
         <div class="card-title">Arte, sfida <em>e sapori</em></div>
-        <div class="card-desc">Il weekend della Vertical SanBe. Unisci l'adrenalina della gara in quota con gli atelier creativi per i bambini e i percorsi enogastronomici in piazzetta.</div>
+        <div class="card-desc">Il weekend della Vertical SanBe. Adrenalina della gara in quota, atelier creativi per i bambini e percorsi enogastronomici in piazzetta.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Sportivi</span><span class="perfetto-tag">Buongustai</span><span class="perfetto-tag">Famiglie</span></div>
-        <button class="card-btn" onclick="toggleDetail('detail-4',this)">Scopri il programma <span class="arr">→</span></button>
+        <button class="card-btn" onclick="toggleDetail('detail-4',this)">Scopri il programma <span class="arr">&rarr;</span></button>
       </div>
     </div>
   </div>
 
   <div class="detail-panel" id="detail-3">
-    <div class="detail-header">
-      <div class="detail-header-title">Stessa tecnica, occhi diversi . 4 agosto</div>
-      <button class="detail-close" onclick="closeDetail('detail-3')">✕</button>
-    </div>
+    <div class="detail-header"><div class="detail-header-title">Stessa tecnica, occhi diversi &middot; 4 agosto</div><button class="detail-close" onclick="closeDetail('detail-3')">&#x2715;</button></div>
     <div class="detail-content">
-      <div class="detail-slot">
-        <div class="detail-time">Ore 10:00</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> <strong>SanBe Kids – Collage &amp; cianotipia</strong> . Ludovica Limido <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Caffè in villaggio / passeggiata libera <span class="abadge abadge-free">Libero</span></div>
-          <div class="detail-note">I bambini imparano a stampare usando la luce del sole e gli elementi raccolti nei boschi di San Bernardino.</div>
-          <a class="dcta" href="#">Riserva il posto per i bambini →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Ore 12:30</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-together">insieme</span> Pranzo nel villaggio <span class="abadge abadge-free">Libero</span></div>
-          <div class="detail-fb"><strong>Suggerimento:</strong> il Bistrot Central o l'Albergo Brocco &amp; Posta per un pranzo tranquillo prima del pomeriggio.</div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Ore 14:30</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> <strong>SanBe Kids multisport</strong> . Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> <strong>Passeggiata botanica e cianotipia</strong> . Ludovica Limido <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-note">Nessun incastro orario. Mentre i figli si sfogano con lo sport, i genitori imparano la stessa tecnica artistica, ma con l'occhio dell'adulto.</div>
-          <a class="dcta" href="#">Iscrivi i bambini al multisport →</a>
-          <a class="dcta" href="#">Prenota il laboratorio adulti →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Ore 17:30</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-together">insieme</span> Aperitivo e confronto delle opere <span class="abadge abadge-free">Libero</span></div>
-          <div class="detail-fb"><strong>Suggerimento:</strong> la Piazzetta Brocco o il Bistrot Central per l'aperitivo finale. Con il voucher cianotipia potrete usufruire di una consumazione dedicata.</div>
-          <a class="dcta" href="#">Riserva un tavolo per l'aperitivo →</a>
-        </div>
-      </div>
-      <div class="checklist">
-        <div class="checklist-title">La tua checklist di prenotazione</div>
-        <div class="checklist-items">
-          <div class="checklist-item"><div class="checklist-num">1</div><a href="#">Iscrivi i bambini al laboratorio cianotipia (Ludovica Limido)</a></div>
-          <div class="checklist-item"><div class="checklist-num">2</div><a href="#">Prenota la passeggiata botanica adulti (Ludovica Limido)</a></div>
-          <div class="checklist-item"><div class="checklist-num">3</div><a href="#">Iscrivi i bambini al multisport (Fullski)</a></div>
-          <div class="checklist-item"><div class="checklist-num">4</div><a href="#">Riserva il tavolo per pranzo o aperitivo</a></div>
-        </div>
-      </div>
+      <div class="detail-slot"><div class="detail-time">Ore 10:00</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> <strong>SanBe Kids &ndash; Collage &amp; Cianotipia</strong> &middot; Ludovica Limido <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> Caff&egrave; in villaggio / passeggiata libera <span class="abadge abadge-free">Libero</span></div><div class="detail-note">I bambini imparano a stampare usando la luce del sole e gli elementi raccolti nei boschi di San Bernardino.</div><a class="dcta" href="#">Riserva il posto per i bambini &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Ore 12:30</div><div class="detail-activities"><div class="detail-activity"><span class="who who-together">Insieme</span> Pranzo nel villaggio <span class="abadge abadge-free">Libero</span></div><div class="detail-fb"><strong>Suggerimento:</strong> il Bistrot Central o l&rsquo;Albergo Brocco &amp; Posta per un pranzo tranquillo prima del pomeriggio.</div></div></div>
+      <div class="detail-slot"><div class="detail-time">Ore 14:30</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> <strong>SanBe Kids Multisport</strong> &middot; Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> <strong>Passeggiata botanica e cianotipia</strong> &middot; Ludovica Limido <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-note">Nessun incastro orario. Mentre i figli si sfogano con lo sport, i genitori imparano la stessa tecnica artistica &mdash; ma con l&rsquo;occhio dell&rsquo;adulto.</div><a class="dcta" href="#">Iscrivi i bambini al Multisport &rarr;</a><a class="dcta" href="#">Prenota il laboratorio adulti &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Ore 17:30</div><div class="detail-activities"><div class="detail-activity"><span class="who who-together">Insieme</span> Aperitivo e confronto delle opere <span class="abadge abadge-free">Libero</span></div><div class="detail-fb"><strong>Suggerimento:</strong> la Piazzetta Brocco o il Bistrot Central per l&rsquo;aperitivo finale. Con il voucher cianotipia potrete usufruire di una consumazione dedicata.</div><a class="dcta" href="#">Riserva un tavolo per l&rsquo;aperitivo &rarr;</a></div></div>
+      <div class="checklist"><div class="checklist-title">La tua checklist di prenotazione</div><div class="checklist-items"><div class="checklist-item"><div class="checklist-num">1</div><a href="#">Iscrivi i bambini al laboratorio cianotipia (Ludovica Limido)</a></div><div class="checklist-item"><div class="checklist-num">2</div><a href="#">Prenota la passeggiata botanica adulti (Ludovica Limido)</a></div><div class="checklist-item"><div class="checklist-num">3</div><a href="#">Iscrivi i bambini al Multisport (Fullski)</a></div><div class="checklist-item"><div class="checklist-num">4</div><a href="#">Riserva il tavolo per pranzo o aperitivo</a></div></div></div>
     </div>
   </div>
 
   <div class="detail-panel" id="detail-4">
-    <div class="detail-header">
-      <div class="detail-header-title">Arte, sfida e sapori . 7 e 8 agosto</div>
-      <button class="detail-close" onclick="closeDetail('detail-4')">✕</button>
-    </div>
+    <div class="detail-header"><div class="detail-header-title">Arte, sfida e sapori &middot; 7 e 8 agosto</div><button class="detail-close" onclick="closeDetail('detail-4')">&#x2715;</button></div>
     <div class="detail-content">
-      <div class="detail-day-label">Venerdì 7 agosto</div>
-      <div class="detail-slot">
-        <div class="detail-time">Mattina</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> SanBe Kids atelier . <strong>Tra vette e farfalle</strong> . Candy Duarte <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Pilates Yolatis . <strong>Francesca Stocco</strong> <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-fb"><strong>Dopo il pilates:</strong> brunch all'Albergo Brocco &amp; Posta, il modo giusto per iniziare bene la giornata prima di raggiungere i bambini per pranzo.</div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pranzo</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-together">insieme</span> Villaggio <span class="abadge abadge-free">Libero</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> SanBe Kids multisport . <strong>Fullski</strong> <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Alpine Beach / tempo libero <span class="abadge abadge-free">Libero</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Sera</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> Alpine Gourmet . Piazzetta Brocco <span class="abadge abadge-warn">Prenotazione consigliata</span></div>
-          <div class="detail-note">Soggiornare in villaggio permette di godersi la serata enogastronomica senza l'ansia del rientro notturno verso Lugano o Milano.</div>
-          <a class="dcta" href="#">Prenota un tavolo all'Albergo Brocco &amp; Posta →</a>
-        </div>
-      </div>
+      <div class="detail-day-label">Venerd&igrave; 7 agosto</div>
+      <div class="detail-slot"><div class="detail-time">Mattina</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> SanBe Kids Atelier &middot; <strong>Tra vette e farfalle</strong> &middot; Candy Duarte <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> Pilates Yolatis &middot; <strong>Francesca Stocco</strong> <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-fb"><strong>Dopo il pilates:</strong> brunch all&rsquo;Albergo Brocco &amp; Posta &mdash; il modo giusto per iniziare bene la giornata prima di raggiungere i bambini per pranzo.</div></div></div>
+      <div class="detail-slot"><div class="detail-time">Pranzo</div><div class="detail-activities"><div class="detail-activity"><span class="who who-together">Insieme</span> Villaggio <span class="abadge abadge-free">Libero</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> SanBe Kids Multisport &middot; <strong>Fullski</strong> <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> Alpine Beach / tempo libero <span class="abadge abadge-free">Libero</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Sera</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> Alpine Gourmet &middot; Piazzetta Brocco <span class="abadge abadge-warn">Prenotazione consigliata</span></div><div class="detail-note">Soggiornare in villaggio permette di godersi la serata enogastronomica senza l&rsquo;ansia del rientro notturno verso Lugano o Milano.</div><a class="dcta" href="#">Prenota un tavolo all&rsquo;Albergo Brocco &amp; Posta &rarr;</a></div></div>
       <div class="detail-sep"></div>
       <div class="detail-day-label">Sabato 8 agosto</div>
-      <div class="detail-slot">
-        <div class="detail-time">Mattina</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> <strong>Vertical SanBe</strong> . Villaggio + Confin <span class="abadge abadge-free">Spettatori libero</span></div>
-          <div class="detail-note">La sfida verticale parte dal villaggio e sale a Confin. Per seguire gli atleti in quota, assicurati di avere il pass della cabinovia.</div>
-          <a class="dcta" href="#">Acquista il pass cabinovia online →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pranzo / pom.</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> Alpine Gourmet . Piazzetta Brocco <span class="abadge abadge-warn">Prenotazione consigliata</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> SanBe Kids atelier . <strong>Erbario alpino</strong> . Candy Duarte <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-fb"><strong>Al termine dell'atelier:</strong> merenda o aperitivo in famiglia alla Piazzetta Brocco con voucher dedicato.</div>
-        </div>
-      </div>
-      <div class="checklist">
-        <div class="checklist-title">La tua checklist di prenotazione</div>
-        <div class="checklist-items">
-          <div class="checklist-item"><div class="checklist-num">1</div><a href="#">Iscrivi i bambini al SanBe Kids atelier (Candy Duarte)</a></div>
-          <div class="checklist-item"><div class="checklist-num">2</div><a href="#">Prenota Pilates Yolatis (Francesca Stocco)</a></div>
-          <div class="checklist-item"><div class="checklist-num">3</div><a href="#">Iscrivi i bambini al multisport (Fullski)</a></div>
-          <div class="checklist-item"><div class="checklist-num">4</div><a href="#">Prenota Alpine Gourmet (Albergo Brocco &amp; Posta)</a></div>
-          <div class="checklist-item"><div class="checklist-num">5</div><a href="#">Iscrivi i bambini all'erbario alpino (Candy Duarte)</a></div>
-          <div class="checklist-item"><div class="checklist-num">6</div><a href="#">Acquista il biglietto della cabinovia per la Vertical SanBe</a></div>
-        </div>
-      </div>
+      <div class="detail-slot"><div class="detail-time">Mattina</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> <strong>Vertical SanBe</strong> &middot; Villaggio + Confin <span class="abadge abadge-free">Spettatori libero</span></div><div class="detail-note">La sfida verticale parte dal villaggio e sale a Confin. Per seguire gli atleti in quota, assicurati di avere il pass della cabinovia.</div><a class="dcta" href="#">Acquista il pass cabinovia online &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Pranzo / pom.</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> Alpine Gourmet &middot; Piazzetta Brocco <span class="abadge abadge-warn">Prenotazione consigliata</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> SanBe Kids Atelier &middot; <strong>Erbario Alpino</strong> &middot; Candy Duarte <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-fb"><strong>Al termine dell&rsquo;atelier:</strong> merenda o aperitivo in famiglia alla Piazzetta Brocco con voucher dedicato.</div></div></div>
+      <div class="checklist"><div class="checklist-title">La tua checklist di prenotazione</div><div class="checklist-items"><div class="checklist-item"><div class="checklist-num">1</div><a href="#">Iscrivi i bambini al SanBe Kids Atelier (Candy Duarte)</a></div><div class="checklist-item"><div class="checklist-num">2</div><a href="#">Prenota Pilates Yolatis (Francesca Stocco)</a></div><div class="checklist-item"><div class="checklist-num">3</div><a href="#">Iscrivi i bambini al Multisport (Fullski)</a></div><div class="checklist-item"><div class="checklist-num">4</div><a href="#">Prenota Alpine Gourmet (Albergo Brocco &amp; Posta)</a></div><div class="checklist-item"><div class="checklist-num">5</div><a href="#">Iscrivi i bambini all&rsquo;Erbario Alpino (Candy Duarte)</a></div><div class="checklist-item"><div class="checklist-num">6</div><a href="#">Acquista il biglietto della cabinovia per la Vertical SanBe</a></div></div></div>
     </div>
   </div>
 
@@ -617,102 +332,34 @@
     <div class="card">
       <div class="card-img-wrap"><img class="card-img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=700&q=80" alt="Notte stellata"></div>
       <div class="card-body">
-        <div class="card-cats">
-          <span class="cat-badge giallo">⭐ Stelle</span>
-          <span class="cat-badge musica">🎵 Musica</span>
-          <span class="cat-badge verdone">🏔️ In Quota</span>
-        </div>
-        <div class="card-date">Weekend lungo . 13, 14 e 15 agosto</div>
+        <div class="card-cats"><span class="cat-badge giallo">&#x2B50; Stelle</span><span class="cat-badge musica">&#x1F3B5; Musica</span><span class="cat-badge verdone">&#x1F3D4; In quota</span></div>
+        <div class="card-date">Weekend lungo &middot; 13, 14 e 15 agosto</div>
         <div class="card-title">Ferragosto <em>alpino</em></div>
-        <div class="card-desc">Tre giorni con le aperture serali straordinarie della cabinovia. La notte delle stelle il 13, il concerto al tramonto a Capanna Confin il 14, il Ferragosto alpino alla Raiffeisen Alpine Lounge il 15.</div>
+        <div class="card-desc">Tre giorni con le aperture serali straordinarie della cabinovia. La Notte delle Stelle il 13, il concerto al tramonto a Capanna Confin il 14, il Ferragosto Alpino alla Raiffeisen Alpine Lounge il 15.</div>
         <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Famiglie</span><span class="perfetto-tag">Coppie</span><span class="perfetto-tag">Night owls</span></div>
-        <button class="card-btn" onclick="toggleDetail('detail-5',this)">Scopri il programma <span class="arr">→</span></button>
+        <button class="card-btn" onclick="toggleDetail('detail-5',this)">Scopri il programma <span class="arr">&rarr;</span></button>
       </div>
     </div>
-    <div style="background:#e4e2d9; border: 1px dashed var(--border-color); border-radius: 16px; display:flex; align-items:center; justify-content:center; padding:2rem; text-align:center;">
-      <div>
-        <div style="font-size:36px;margin-bottom:1rem">📅</div>
-        <div style="font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:0.5rem">Altre date in arrivo</div>
-        <div style="font-size:14px;color:var(--text-muted);line-height:1.5;">Il calendario si aggiorna.<br>Iscriviti alla newsletter per non perdere niente.</div>
-      </div>
+    <div style="background:var(--avorio); border: 1.5px dashed var(--bordo); border-radius: 16px; display:flex; align-items:center; justify-content:center; padding:2rem; text-align:center;">
+      <div><div style="font-size:32px;margin-bottom:0.75rem">&#x1F4C5;</div><div style="font-size:15px;font-weight:700;color:var(--nero);margin-bottom:0.4rem">Altre date in arrivo</div><div style="font-size:13px;color:var(--grigio);line-height:1.5;">Il calendario si aggiorna.<br>Iscriviti alla newsletter per non perdere niente.</div></div>
     </div>
   </div>
 
   <div class="detail-panel" id="detail-5">
-    <div class="detail-header">
-      <div class="detail-header-title">Ferragosto alpino . 13, 14 e 15 agosto</div>
-      <button class="detail-close" onclick="closeDetail('detail-5')">✕</button>
-    </div>
+    <div class="detail-header"><div class="detail-header-title">Ferragosto alpino &middot; 13, 14 e 15 agosto</div><button class="detail-close" onclick="closeDetail('detail-5')">&#x2715;</button></div>
     <div class="detail-content">
-      <div class="detail-day-label">Giovedì 13 agosto . Il debutto sotto le stelle</div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-arrivo">arrivo</span> Check-in</div>
-          <div class="detail-activity"><span class="who who-kids">bambini</span> <strong>SanBe Kids multisport</strong> . Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Villaggio / tempo libero <span class="abadge abadge-free">Libero</span></div>
-          <a class="dcta" href="#">Iscrivi i bambini al multisport →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Dalle 19:30</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> <strong>Notte delle stelle</strong> . apertura serale cabinovia . Capanna Confin <span class="abadge abadge-book">Pass richiesto</span></div>
-          <div class="detail-note">Cena d'alta quota e osservazione guidata del cielo stellato, lontano dall'inquinamento luminoso della pianura. L'accesso richiede lo skipass estivo o il pass serale dedicato.</div>
-          <a class="dcta" href="#">Acquista il pass cabinovia serale →</a>
-        </div>
-      </div>
+      <div class="detail-day-label">Gioved&igrave; 13 agosto &middot; Il debutto sotto le stelle</div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-arrivo">Arrivo</span> Check-in</div><div class="detail-activity"><span class="who who-kids">Bambini</span> <strong>SanBe Kids Multisport</strong> &middot; Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> Villaggio / tempo libero <span class="abadge abadge-free">Libero</span></div><a class="dcta" href="#">Iscrivi i bambini al Multisport &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Dalle 19:30</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> <strong>Notte delle Stelle</strong> &middot; apertura serale cabinovia &middot; Capanna Confin <span class="abadge abadge-book">Pass richiesto</span></div><div class="detail-note">Cena d&rsquo;alta quota e osservazione guidata del cielo stellato, lontano dall&rsquo;inquinamento luminoso della pianura. L&rsquo;accesso richiede lo skipass estivo o il pass serale dedicato.</div><a class="dcta" href="#">Acquista il pass cabinovia serale &rarr;</a></div></div>
       <div class="detail-sep"></div>
-      <div class="detail-day-label">Venerdì 14 agosto . Note al tramonto</div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> <strong>SanBe Kids multisport</strong> . Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> Sentieri / villaggio / tempo libero <span class="abadge abadge-free">Libero</span></div>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Dalle 18:00</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-event">evento</span> <strong>Concerto al tramonto</strong> . Alpine Elements . Capanna Confin <span class="abadge abadge-book">Pass richiesto</span></div>
-          <div class="detail-note">La musica live si fonde con i colori del sole che scompare dietro le vette. Assicurati il biglietto per gli impianti di risalita per salire in quota.</div>
-          <a class="dcta" href="#">Acquista il pass cabinovia serale →</a>
-        </div>
-      </div>
+      <div class="detail-day-label">Venerd&igrave; 14 agosto &middot; Note al tramonto</div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> <strong>SanBe Kids Multisport</strong> &middot; Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> Sentieri / villaggio / tempo libero <span class="abadge abadge-free">Libero</span></div></div></div>
+      <div class="detail-slot"><div class="detail-time">Dalle 18:00</div><div class="detail-activities"><div class="detail-activity"><span class="who who-event">Evento</span> <strong>Concerto al tramonto</strong> &middot; Alpine Elements &middot; Capanna Confin <span class="abadge abadge-book">Pass richiesto</span></div><div class="detail-note">La musica live si fonde con i colori del sole che scompare dietro le vette. Assicurati il biglietto per gli impianti di risalita per salire in quota.</div><a class="dcta" href="#">Acquista il pass cabinovia serale &rarr;</a></div></div>
       <div class="detail-sep"></div>
-      <div class="detail-day-label">Sabato 15 agosto . La tradizione nel piatto</div>
-      <div class="detail-slot">
-        <div class="detail-time">Mattina</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-adults">adulti</span> <strong>Esperienza Innerwalk</strong> . passeggiata meditativa + spa <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-adults">adulti</span> <strong>Workshop Kokedama</strong> . Valentina . Sala Meeting Erminia <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-note">Il modo perfetto per ricaricarsi dopo le serate in quota. La Sala Meeting Erminia è climatizzata e attrezzata per il massimo comfort.</div>
-          <a class="dcta" href="#">Prenota l'esperienza Innerwalk →</a>
-          <a class="dcta" href="#">Iscriviti al workshop Kokedama →</a>
-        </div>
-      </div>
-      <div class="detail-slot">
-        <div class="detail-time">Pomeriggio</div>
-        <div class="detail-activities">
-          <div class="detail-activity"><span class="who who-kids">bambini</span> <strong>SanBe Kids multisport</strong> . Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div>
-          <div class="detail-activity"><span class="who who-event">evento</span> <strong>Ferragosto alpino</strong> . Raiffeisen Alpine Lounge <span class="abadge abadge-warn">Prenotazione consigliata</span></div>
-          <div class="detail-note">Il pranzo tradizional in quota alla Raiffeisen Alpine Lounge richiede la prenotazione del tavolo e il titolo di trasporto per la cabinovia.</div>
-          <a class="dcta" href="#">Riserva il tavolo alla Raiffeisen Alpine Lounge →</a>
-          <a class="dcta" href="#">Acquista lo skipass estivo / pass cabinovia →</a>
-        </div>
-      </div>
-      <div class="checklist">
-        <div class="checklist-title">La tua checklist di prenotazione</div>
-        <div class="checklist-items">
-          <div class="checklist-item"><div class="checklist-num">1</div><a href="#">Acquista pass cabinovia . Notte delle stelle (SBSA)</a></div>
-          <div class="checklist-item"><div class="checklist-num">2</div><a href="#">Acquista pass cabinovia . Concerto al tramonto (SBSA)</a></div>
-          <div class="checklist-item"><div class="checklist-num">3</div><a href="#">Iscrivi i bambini al multisport (Fullski)</a></div>
-          <div class="checklist-item"><div class="checklist-num">4</div><a href="#">Prenota l'esperienza Innerwalk (passeggiata + spa)</a></div>
-          <div class="checklist-item"><div class="checklist-num">5</div><a href="#">Iscriviti al workshop Kokedama (Valentina)</a></div>
-          <div class="checklist-item"><div class="checklist-num">6</div><a href="#">Riserva il tavolo alla Raiffeisen Alpine Lounge per il Ferragosto alpino</a></div>
-          <div class="checklist-item"><div class="checklist-num">7</div><a href="#">Assicurati una camera all'Albergo Brocco &amp; Posta per il weekend lungo</a></div>
-        </div>
-      </div>
+      <div class="detail-day-label">Sabato 15 agosto &middot; La tradizione nel piatto</div>
+      <div class="detail-slot"><div class="detail-time">Mattina</div><div class="detail-activities"><div class="detail-activity"><span class="who who-adults">Adulti</span> <strong>Esperienza Innerwalk</strong> &middot; passeggiata meditativa + spa <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-adults">Adulti</span> <strong>Workshop Kokedama</strong> &middot; Valentina &middot; Sala Meeting Erminia <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-note">Il modo perfetto per ricaricarsi dopo le serate in quota. La Sala Meeting Erminia &egrave; climatizzata e attrezzata per il massimo comfort.</div><a class="dcta" href="#">Prenota l&rsquo;esperienza Innerwalk &rarr;</a><a class="dcta" href="#">Iscriviti al workshop Kokedama &rarr;</a></div></div>
+      <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities"><div class="detail-activity"><span class="who who-kids">Bambini</span> <strong>SanBe Kids Multisport</strong> &middot; Fullski <span class="abadge abadge-book">Iscrizione richiesta</span></div><div class="detail-activity"><span class="who who-event">Evento</span> <strong>Ferragosto Alpino</strong> &middot; Raiffeisen Alpine Lounge <span class="abadge abadge-warn">Prenotazione consigliata</span></div><div class="detail-note">Il pranzo tradizionale in quota alla Raiffeisen Alpine Lounge richiede la prenotazione del tavolo e il titolo di trasporto per la cabinovia.</div><a class="dcta" href="#">Riserva il tavolo alla Raiffeisen Alpine Lounge &rarr;</a><a class="dcta" href="#">Acquista lo skipass estivo / pass cabinovia &rarr;</a></div></div>
+      <div class="checklist"><div class="checklist-title">La tua checklist di prenotazione</div><div class="checklist-items"><div class="checklist-item"><div class="checklist-num">1</div><a href="#">Acquista pass cabinovia &middot; Notte delle Stelle (SBSA)</a></div><div class="checklist-item"><div class="checklist-num">2</div><a href="#">Acquista pass cabinovia &middot; Concerto al tramonto (SBSA)</a></div><div class="checklist-item"><div class="checklist-num">3</div><a href="#">Iscrivi i bambini al Multisport (Fullski)</a></div><div class="checklist-item"><div class="checklist-num">4</div><a href="#">Prenota l&rsquo;esperienza Innerwalk (passeggiata + spa)</a></div><div class="checklist-item"><div class="checklist-num">5</div><a href="#">Iscriviti al workshop Kokedama (Valentina)</a></div><div class="checklist-item"><div class="checklist-num">6</div><a href="#">Riserva il tavolo alla Raiffeisen Alpine Lounge per il Ferragosto Alpino</a></div><div class="checklist-item"><div class="checklist-num">7</div><a href="#">Assicurati una camera all&rsquo;Albergo Brocco &amp; Posta per il weekend lungo</a></div></div></div>
     </div>
   </div>
 
@@ -721,115 +368,33 @@
 <div class="pause-section" id="pause">
   <div class="section-tag">Piccole pause alpine</div>
   <div class="section-title">Non serve <em>una giornata intera</em></div>
-  <p class="section-desc">Combinazioni da 2 o 3 ore per chi è già nel villaggio o ha solo qualche ora libera. Scegli, prenota e lascia che San Bernardino faccia il resto.</p>
+  <p class="section-desc">Combinazioni da 2&ndash;3 ore per chi &egrave; gi&agrave; nel villaggio o ha solo qualche ora libera. Scegli, prenota e lascia che San Bernardino faccia il resto.</p>
   <hr class="section-rule">
   <div class="pause-grid">
-
-    <div class="pause-card">
-      <span class="pause-emoji">🧘</span>
-      <div class="pause-duration">2 ore . Mattina</div>
-      <div class="pause-title">Yoga e colazione</div>
-      <div class="pause-desc">Una sessione di yoga all'aperto tra i larici, seguita da una colazione all'Albergo Brocco &amp; Posta. Il modo più lento di iniziare la giornata a San Bernardino.</div>
-      <div class="pause-steps">
-        <div class="pause-step"><div class="pause-step-num">1</div>Yoga all'aperto . 09:30–11:00 . Rising Spirits</div>
-        <div class="pause-step"><div class="pause-step-num">2</div>Colazione o brunch all'Albergo Brocco &amp; Posta</div>
-      </div>
-      <a class="pause-cta" href="#">Prenota lo yoga →</a>
-    </div>
-
-    <div class="pause-card">
-      <span class="pause-emoji">🏋️</span>
-      <div class="pause-duration">2 ore . Mattina</div>
-      <div class="pause-title">Pilates e brunch</div>
-      <div class="pause-desc">Una lezione di Pilates Yolatis in piccolo gruppo, poi brunch alla Piazzetta Brocco. Per chi vuole muoversi e poi sedersi con calma.</div>
-      <div class="pause-steps">
-        <div class="pause-step"><div class="pause-step-num">1</div>Pilates Yolatis . 10:00–11:00 . Francesca Stocco</div>
-        <div class="pause-step"><div class="pause-step-num">2</div>Brunch all'Albergo Brocco &amp; Posta o Piazzetta Brocco</div>
-      </div>
-      <a class="pause-cta" href="#">Prenota il pilates →</a>
-    </div>
-
-    <div class="pause-card">
-      <span class="pause-emoji">🌿</span>
-      <div class="pause-duration">3 ore . Pomeriggio</div>
-      <div class="pause-title">Passeggiata botanica e aperitivo</div>
-      <div class="pause-desc">Una passeggiata botanica guidata tra i boschi di San Bernardino con Ludovica Limido, seguita da un aperitivo in piazzetta.</div>
-      <div class="pause-steps">
-        <div class="pause-step"><div class="pause-step-num">1</div>Passeggiata botanica e cianotipia . 14:00 . Ludovica Limido</div>
-        <div class="pause-step"><div class="pause-step-num">2</div>Aperitivo finale . Piazzetta Brocco / Bistrot Central</div>
-      </div>
-      <a class="pause-cta" href="#">Prenota la passeggiata →</a>
-    </div>
-
-    <div class="pause-card">
-      <span class="pause-emoji">🎨</span>
-      <div class="pause-duration">3 ore . Mattina</div>
-      <div class="pause-title">Workshop creativo e pranzo</div>
-      <div class="pause-desc">Un laboratorio manuale al mattino tra uncinetto, acquarello botanico o kokedama, poi pranzo all'Albergo Brocco &amp; Posta. Nessuna esperienza richiesta.</div>
-      <div class="pause-steps">
-        <div class="pause-step"><div class="pause-step-num">1</div>Workshop creativo . mattina . Valentina . Sala Meeting Erminia</div>
-        <div class="pause-step"><div class="pause-step-num">2</div>Pranzo o brunch all'Albergo Brocco &amp; Posta</div>
-      </div>
-      <a class="pause-cta" href="#">Prenota il workshop →</a>
-    </div>
-
-    <div class="pause-card">
-      <span class="pause-emoji">🎪</span>
-      <div class="pause-duration">2 ore . Pomeriggio</div>
-      <div class="pause-title">Atelier kids e merenda in famiglia</div>
-      <div class="pause-desc">I bambini all'atelier creativo con Candy Duarte, poi merenda o brunch in famiglia alla Piazzetta Brocco o al Bistrot Central.</div>
-      <div class="pause-steps">
-        <div class="pause-step"><div class="pause-step-num">1</div>SanBe Kids atelier . Candy Duarte . 7 o 8 agosto</div>
-        <div class="pause-step"><div class="pause-step-num">2</div>Merenda in famiglia . Piazzetta Brocco / Bistrot Central</div>
-      </div>
-      <a class="pause-cta" href="#">Prenota l'atelier →</a>
-    </div>
-
-    <div class="pause-card">
-      <span class="pause-emoji">✨</span>
-      <div class="pause-duration">Serata . 2 o 3 ore</div>
-      <div class="pause-title">Workshop serale e apericena</div>
-      <div class="pause-desc">Un workshop creativo serale con apericena incluso. Il modo più insolito di passare una serata a San Bernardino, tra le mani in pasta e un bicchiere di vino.</div>
-      <div class="pause-steps">
-        <div class="pause-step"><div class="pause-step-num">1</div>Workshop creativo serale . Valentina . Sala Meeting Erminia</div>
-        <div class="pause-step"><div class="pause-step-num">2</div>Apericena incluso . Albergo Brocco &amp; Posta / Sala Meeting Erminia</div>
-      </div>
-      <a class="pause-cta" href="#">Prenota il workshop serale →</a>
-    </div>
-
+    <div class="pause-card"><span class="pause-emoji">&#x1F9D8;</span><div class="pause-duration">2 ore &middot; Mattina</div><div class="pause-title">Yoga e colazione</div><div class="pause-desc">Una sessione di yoga all&rsquo;aperto tra i larici, seguita da una colazione all&rsquo;Albergo Brocco &amp; Posta. Il modo pi&ugrave; lento di iniziare la giornata a San Bernardino.</div><div class="pause-steps"><div class="pause-step"><div class="pause-step-num">1</div>Yoga all&rsquo;aperto &middot; 09:30&ndash;11:00 &middot; Rising Spirits</div><div class="pause-step"><div class="pause-step-num">2</div>Colazione o brunch all&rsquo;Albergo Brocco &amp; Posta</div></div><a class="pause-cta" href="#">Prenota lo yoga &rarr;</a></div>
+    <div class="pause-card"><span class="pause-emoji">&#x1F3CB;</span><div class="pause-duration">2 ore &middot; Mattina</div><div class="pause-title">Pilates e brunch</div><div class="pause-desc">Una lezione di Pilates Yolatis in piccolo gruppo, poi brunch alla Piazzetta Brocco. Per chi vuole muoversi e poi sedersi con calma.</div><div class="pause-steps"><div class="pause-step"><div class="pause-step-num">1</div>Pilates Yolatis &middot; 10:00&ndash;11:00 &middot; Francesca Stocco</div><div class="pause-step"><div class="pause-step-num">2</div>Brunch all&rsquo;Albergo Brocco &amp; Posta o Piazzetta Brocco</div></div><a class="pause-cta" href="#">Prenota il pilates &rarr;</a></div>
+    <div class="pause-card"><span class="pause-emoji">&#x1F33F;</span><div class="pause-duration">3 ore &middot; Pomeriggio</div><div class="pause-title">Passeggiata botanica e aperitivo</div><div class="pause-desc">Una passeggiata botanica guidata tra i boschi di San Bernardino con Ludovica Limido, seguita da un aperitivo in piazzetta.</div><div class="pause-steps"><div class="pause-step"><div class="pause-step-num">1</div>Passeggiata botanica e cianotipia &middot; 14:00 &middot; Ludovica Limido</div><div class="pause-step"><div class="pause-step-num">2</div>Aperitivo finale &middot; Piazzetta Brocco / Bistrot Central</div></div><a class="pause-cta" href="#">Prenota la passeggiata &rarr;</a></div>
+    <div class="pause-card"><span class="pause-emoji">&#x1F3A8;</span><div class="pause-duration">3 ore &middot; Mattina</div><div class="pause-title">Workshop creativo e pranzo</div><div class="pause-desc">Un laboratorio manuale al mattino tra uncinetto, acquarello botanico o kokedama, poi pranzo all&rsquo;Albergo Brocco &amp; Posta. Nessuna esperienza richiesta.</div><div class="pause-steps"><div class="pause-step"><div class="pause-step-num">1</div>Workshop creativo &middot; mattina &middot; Valentina &middot; Sala Meeting Erminia</div><div class="pause-step"><div class="pause-step-num">2</div>Pranzo o brunch all&rsquo;Albergo Brocco &amp; Posta</div></div><a class="pause-cta" href="#">Prenota il workshop &rarr;</a></div>
+    <div class="pause-card"><span class="pause-emoji">&#x1F3AA;</span><div class="pause-duration">2 ore &middot; Pomeriggio</div><div class="pause-title">Atelier kids e merenda in famiglia</div><div class="pause-desc">I bambini all&rsquo;atelier creativo con Candy Duarte, poi merenda o brunch in famiglia alla Piazzetta Brocco o al Bistrot Central.</div><div class="pause-steps"><div class="pause-step"><div class="pause-step-num">1</div>SanBe Kids Atelier &middot; Candy Duarte &middot; 7 o 8 agosto</div><div class="pause-step"><div class="pause-step-num">2</div>Merenda in famiglia &middot; Piazzetta Brocco / Bistrot Central</div></div><a class="pause-cta" href="#">Prenota l&rsquo;atelier &rarr;</a></div>
+    <div class="pause-card"><span class="pause-emoji">&#x2728;</span><div class="pause-duration">Serata &middot; 2&ndash;3 ore</div><div class="pause-title">Workshop serale e apericena</div><div class="pause-desc">Un workshop creativo serale con apericena incluso. Il modo pi&ugrave; insolito di passare una serata a San Bernardino, tra le mani in pasta e un bicchiere di vino.</div><div class="pause-steps"><div class="pause-step"><div class="pause-step-num">1</div>Workshop creativo serale &middot; Valentina &middot; Sala Meeting Erminia</div><div class="pause-step"><div class="pause-step-num">2</div>Apericena incluso &middot; Albergo Brocco &amp; Posta / Sala Meeting Erminia</div></div><a class="pause-cta" href="#">Prenota il workshop serale &rarr;</a></div>
   </div>
 </div>
 
-<div class="bottom-note">
-  Le attività partner si prenotano direttamente con l'organizzatore . Gli eventi SBSA tramite il sistema di prenotazione . Il programma è soggetto a variazioni . Estate 2026
-</div>
+<div class="bottom-note">Le attivit&agrave; partner si prenotano direttamente con l&rsquo;organizzatore &middot; Gli eventi SBSA tramite il sistema di prenotazione &middot; Il programma &egrave; soggetto a variazioni &middot; Estate 2026</div>
 
 <script>
-let openDetail = null;
-let openBtn = null;
-
+let openDetail = null, openBtn = null;
 function toggleDetail(id, btn) {
-  if (openDetail && openDetail !== id) {
-    document.getElementById(openDetail).classList.remove('open');
-    if (openBtn) { openBtn.classList.remove('open'); openBtn.querySelector('.arr').textContent = '→'; }
-  }
-  const panel = document.getElementById(id);
-  const isOpen = panel.classList.contains('open');
-  panel.classList.toggle('open', !isOpen);
-  btn.classList.toggle('open', !isOpen);
-  btn.querySelector('.arr').textContent = isOpen ? '→' : '↓';
-  openDetail = isOpen ? null : id;
-  openBtn = isOpen ? null : btn;
+  if (openDetail && openDetail !== id) { document.getElementById(openDetail).classList.remove('open'); if (openBtn) { openBtn.classList.remove('open'); openBtn.querySelector('.arr').innerHTML = '&rarr;'; } }
+  const panel = document.getElementById(id), isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen); btn.classList.toggle('open', !isOpen);
+  btn.querySelector('.arr').innerHTML = isOpen ? '&rarr;' : '&darr;';
+  openDetail = isOpen ? null : id; openBtn = isOpen ? null : btn;
   if (!isOpen) setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
 }
-
 function closeDetail(id) {
-  const panel = document.getElementById(id);
-  panel.classList.remove('open');
-  if (openDetail === id) {
-    if (openBtn) { openBtn.classList.remove('open'); openBtn.querySelector('.arr').textContent = '→'; }
-    openDetail = null; openBtn = null;
-  }
+  document.getElementById(id).classList.remove('open');
+  if (openDetail === id) { if (openBtn) { openBtn.classList.remove('open'); openBtn.querySelector('.arr').innerHTML = '&rarr;'; } openDetail = null; openBtn = null; }
 }
 </script>
 </body>
