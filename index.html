@@ -190,18 +190,16 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">Summer Village &middot; 3 luglio &ndash; 16 agosto 2026</div>
+  <div class="hero-tag">Summer Village &middot; 3 luglio &ndash; 29 agosto 2026</div>
   <h1>Lasciati<br><em>ispirare</em></h1>
   <p class="hero-body" style="font-size:20px;font-weight:600;color:var(--nero);margin-bottom:1rem;">Sei pi&ugrave; da meditazione o da trekking selvaggio?</p>
   <p class="hero-body">A San Bernardino trovi attivit&agrave; e itinerari personalizzati per ogni stile di vita. Che tu stia pianificando una fuga strategica dalla pianura o che tu sia gi&agrave; nel villaggio, la tua ricarica alpina &egrave; pi&ugrave; vicina di quanto pensi: a soli 50 minuti da Lugano e a meno di due ore da Milano.</p>
   <ul class="hero-list">
     <li><strong>Giornate e weekend:</strong> programmi completi e coordinati tra natura, eventi speciali e relax in quota.</li>
-    <li><strong>Piccole pause alpine:</strong> esperienze concentrate da 2 o 3 ore per arricchire la tua giornata in modo spontaneo.</li>
   </ul>
-  <p class="hero-sub">Scegli l&rsquo;approccio ideale per il tuo tempo.</p>
+  <p class="hero-sub"></p>
   <div class="hero-ctas">
     <a href="#giornate" class="hero-btn-p">Giornate e weekend</a>
-    <a href="#pause" class="hero-btn-s">Piccole pause alpine</a>
   </div>
 </div>
 
@@ -232,8 +230,8 @@
         <div class="card-cats"><span class="cat-badge musica">&#x1F3B5; Musica live</span><span class="cat-badge famiglia">&#x1F46A; Famiglia</span><span class="cat-badge sport">&#x1F1E8;&#x1F1ED; Svizzera</span></div>
         <div class="card-date">Giornata &middot; 1 agosto</div>
         <div class="card-title">Festa Nazionale <em>in quota</em></div>
-        <div class="card-desc">Vivi il 1&deg; agosto nel cuore delle Alpi svizzere. Un villaggio in festa con attivit&agrave; multisport dedicate ai bambini nel pomeriggio e il grande concerto serale di Davide Van De Sfroos sul palco della Raiffeisen Alpine Lounge.</div>
-        <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Famiglie</span><span class="perfetto-tag">Amanti della musica</span></div>
+        <div class="card-desc">Vivi il 1&deg; agosto nel cuore delle Alpi svizzere. Inizia la mattina con l&rsquo;esperienza Innerwalk, poi un villaggio in festa con attivit&agrave; multisport dedicate ai bambini nel pomeriggio e il grande concerto serale di Davide Van De Sfroos sul palco della Raiffeisen Alpine Lounge.</div>
+        <div class="perfetto-per"><span class="perfetto-label">Perfetto per</span><span class="perfetto-tag">Famiglie</span><span class="perfetto-tag">Ticinesi e lombardi</span><span class="perfetto-tag">Amanti della musica</span></div>
         <button class="card-btn" onclick="toggleDetail('detail-2',this)">Scopri il programma <span class="arr">&rarr;</span></button>
       </div>
     </div>
@@ -269,7 +267,7 @@
         <div class="detail-activity"><span class="who who-together">Insieme</span> <strong>Capanna Confin</strong> <span class="abadge abadge-free">Libero</span></div>
       </div></div>
       <div class="detail-slot"><div class="detail-time">Pomeriggio</div><div class="detail-activities">
-        <div class="detail-activity"><span class="who who-together">Insieme</span> <strong>Discesa libera o in cabinovia</strong> <span class="abadge abadge-free">Libero</span></div>
+        <div class="detail-activity"><span class="who who-together">Insieme</span> <strong>Discesa libera o in gondola</strong> <span class="abadge abadge-free">Libero</span></div>
       </div></div>
       <div class="checklist"><div class="checklist-title">La tua checklist di prenotazione</div><div class="checklist-items">
         <div class="checklist-item"><div class="checklist-num">1</div><a href="#">Prenota l&rsquo;esperienza Innerwalk (passeggiata e spa)</a></div>
@@ -508,7 +506,36 @@
   <a href="#" class="promo-btn" style="border-color:var(--nero);color:var(--nero);">Prenota la tua camera</a>
 </div>
 
+<div class="bottom-note">
+  Le attivit&agrave; partner si prenotano direttamente con l&rsquo;organizzatore &middot; Gli eventi SBSA tramite il sistema di prenotazione &middot; Il programma &egrave; soggetto a variazioni &middot; Estate 2026
+</div>
 
+<script>
+let openDetail = null, openBtn = null;
+
+function toggleDetail(id, btn) {
+  if (openDetail && openDetail !== id) {
+    document.getElementById(openDetail).classList.remove('open');
+    if (openBtn) { openBtn.classList.remove('open'); openBtn.querySelector('.arr').innerHTML = '&rarr;'; }
+  }
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.querySelector('.arr').innerHTML = isOpen ? '&rarr;' : '&darr;';
+  openDetail = isOpen ? null : id;
+  openBtn = isOpen ? null : btn;
+  if (!isOpen) setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+
+function closeDetail(id) {
+  const panel = document.getElementById(id);
+  panel.classList.remove('open');
+  if (openDetail === id) {
+    if (openBtn) { openBtn.classList.remove('open'); openBtn.querySelector('.arr').innerHTML = '&rarr;'; }
+    openDetail = null; openBtn = null;
+  }
+}
 </script>
 </body>
 </html>
